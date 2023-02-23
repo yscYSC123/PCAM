@@ -13,7 +13,7 @@ layui.use(['table','layer'],function(){
         //单元格的最小宽度
         ,cellMinWidth:95
         //访问数据的url，后台的数据接口
-        ,url: ctx + '/doctor/list'
+        ,url: ctx + '/adminDoctor/list'
         //开启分页
         ,page: true
         //每页显示的数量
@@ -109,7 +109,7 @@ layui.use(['table','layer'],function(){
             //发送ajax请求，执行删除操作
             $.ajax({
                 type:"post",
-                url:ctx + "/doctor/delete",
+                url:ctx + "/adminDoctor/delete",
                 data:ids,
                 success:function (result) {
                     //判断删除结果
@@ -145,7 +145,7 @@ layui.use(['table','layer'],function(){
             layer.close(index);
             $.ajax({
                 type:"post",
-                url:ctx + "/doctor/delete",
+                url:ctx + "/adminDoctor/delete",
                 data:{
                     ids:id
                 },
@@ -166,7 +166,7 @@ layui.use(['table','layer'],function(){
     //打开添加或修改咨询师页面
     function openAddOrUpdateUserDialog(id) {
         var title = "<h3>添加咨询师</h3>";
-        var url = ctx + "/doctor/toDoctorPage";
+        var url = ctx + "/adminDoctor/toDoctorPage";
         //判断id是否为空
         if (id != null && id != ''){
             title = "<h3>更新咨询师</h3>";

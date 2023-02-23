@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-@RequestMapping("doctor")
+@RequestMapping("adminDoctor")
 public class AdminDoctorController extends BaseController {
     @Resource
     private AdminDoctorService adminDoctorService;
@@ -28,7 +28,7 @@ public class AdminDoctorController extends BaseController {
      */
     @RequestMapping("index")
     public String index(){
-        return "doctor/doctor";
+        return "admin/doctor/doctor";
     }
 
     @RequestMapping("list")
@@ -64,7 +64,7 @@ public class AdminDoctorController extends BaseController {
             request.setAttribute("doctor",doctor);
         }
 
-        return "doctor/add_update";
+        return "admin/doctor/add_update";
     }
 
     /**
@@ -124,7 +124,7 @@ public class AdminDoctorController extends BaseController {
             // 将数据设置到请求域中
             request.setAttribute("user",user);
         }
-        return "doctor/setting";
+        return "admin/doctor/setting";
     }
 
 }

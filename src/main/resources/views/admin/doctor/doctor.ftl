@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>用户管理</title>
-        <#include "../common.ftl">
+        <#include "../../common.ftl">
     </head>
     <body class="childrenBody">
         <form class="layui-form" >
@@ -10,21 +10,13 @@
                 <form class="layui-form">
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <input type="text" name="userName" class="layui-input searchVal" placeholder="用户昵称" />
+                            <input type="text" name="userName" class="layui-input searchVal" placeholder="咨询师昵称" />
                         </div>
                         <div class="layui-input-inline">
                             <input type="text" name="email" class="layui-input searchVal" placeholder="邮箱" />
                         </div>
                         <div class="layui-input-inline">
                             <input type="text" name="phone" class="layui-input searchVal" placeholder="手机号" />
-                        </div>
-                        <div class="layui-input-inline">
-                            <select name="level"  id="level">
-                                <option value="" >角色</option>
-                                <option value="0">管理员</option>
-                                <option value="1" >咨询师</option>
-                                <option value="2" >来访者</option>
-                            </select>
                         </div>
                         <a class="layui-btn search_btn" data-type="reload">
                             <i class="layui-icon">&#xe615;</i>
@@ -40,11 +32,11 @@
                 <div class="layui-btn-container">
                     <a class="layui-btn layui-btn-normal addNews_btn" lay-event="add">
                         <i class="layui-icon">&#xe608;</i>
-                        添加用户
+                        添加咨询师
                     </a>
                     <a class="layui-btn layui-btn-normal delNews_btn" lay-event="del">
                         <i class="layui-icon">&#xe608;</i>
-                        删除用户
+                        删除咨询师
                     </a>
                 </div>
             </script>
@@ -55,7 +47,9 @@
                 <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
             </script>
         </form>
-
-    <script type="text/javascript" src="${ctx}/js/admin/client/client.js"></script>
+    <script type="text/html" id="imgtmp">
+        <img src="images/{{d.img}}" style="width: 50px" height="50px"/>
+    </script>
+    <script type="text/javascript" src="${ctx}/js/admin/doctor/doctor.js"></script>
     </body>
 </html>

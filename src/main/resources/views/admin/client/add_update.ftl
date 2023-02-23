@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <#include "../common.ftl">
+        <#include "../../common.ftl">
     </head>
     <body class="childrenBody">
         <form class="layui-form" style="width:80%;">

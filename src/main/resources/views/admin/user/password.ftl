@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>修改密码</title>
-    <#include "../common.ftl">
+    <#include "../../common.ftl">
     <style>
         .layui-form-item .layui-input-company {width: auto;padding-right: 10px;line-height: 38px;}
     </style>

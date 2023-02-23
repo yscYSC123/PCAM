@@ -3,7 +3,6 @@ package com.xxx.pcam.controller;
 import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.query.UserQuery;
 import com.xxx.pcam.service.AdminDoctorService;
-import com.xxx.pcam.service.ClientArchiveService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,7 +22,7 @@ public class ClientArchiveController extends BaseController {
      */
     @RequestMapping("index")
     public String index(){
-        return "client/subAdd";
+        return "client/booking/subAdd";
     }
 
     @RequestMapping("list")
@@ -31,4 +30,5 @@ public class ClientArchiveController extends BaseController {
     public Map<String, Object> selectByParams(UserQuery userQuery){
         return adminDoctorService.queryDoctorByParams(userQuery);
     }
+
 }

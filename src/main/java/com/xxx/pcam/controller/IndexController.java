@@ -40,7 +40,7 @@ public class IndexController extends BaseController {
         User user = adminUserService.selectByPrimaryKey(userId);
         request.getSession().setAttribute("user",user);
 
-        return "main";
+        return "admin/main";
     }
 
     @RequestMapping("main1")
@@ -61,7 +61,7 @@ public class IndexController extends BaseController {
         User user = adminUserService.selectByPrimaryKey(userId);
         request.getSession().setAttribute("user",user);
 
-        return "main2";
+        return "client/main2";
     }
 
 }

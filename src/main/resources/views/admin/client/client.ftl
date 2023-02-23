@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>用户管理</title>
-        <#include "../common.ftl">
+        <#include "../../common.ftl">
     </head>
     <body class="childrenBody">
         <form class="layui-form" >

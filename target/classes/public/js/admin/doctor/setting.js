@@ -12,7 +12,7 @@ layui.use(['upload','element','form', 'layer','formSelects'], function () {
 
     var uploadInst = upload.render({
         elem: '#test1'
-        ,url: ctx+'/doctor/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+        ,url: ctx+'/adminDoctor/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
         ,before: function(obj){
             //预读本地文件示例，不支持ie8
             obj.preview(function(index, file, result){
@@ -64,7 +64,7 @@ layui.use(['upload','element','form', 'layer','formSelects'], function () {
 
         //判断用户id是否为空
         if ($("[name = 'id']").val()){
-            url = ctx + "/doctor/update";
+            url = ctx + "/adminDoctor/update";
         }
 
         $.post(url,formData,function (result) {

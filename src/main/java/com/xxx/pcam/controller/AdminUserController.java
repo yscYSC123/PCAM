@@ -103,7 +103,7 @@ public class AdminUserController extends BaseController{
     @RequestMapping("toPasswordPage")
     public String toPasswordPage() {
 
-        return "user/password";
+        return "admin/user/password";
     }
 
     /**
@@ -122,7 +122,7 @@ public class AdminUserController extends BaseController{
             // 将数据设置到请求域中
             request.setAttribute("user",user);
         }
-        return "user/setting";
+        return "admin/user/setting";
     }
 
 }

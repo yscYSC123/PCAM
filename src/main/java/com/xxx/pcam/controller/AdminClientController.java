@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 @Controller
-@RequestMapping("client")
+@RequestMapping("adminClient")
 public class AdminClientController extends BaseController {
 
     @Resource
@@ -27,7 +27,7 @@ public class AdminClientController extends BaseController {
      */
     @RequestMapping("index")
     public String index(){
-        return "client/client";
+        return "admin/client/client";
     }
 
     @RequestMapping("list")
@@ -62,7 +62,7 @@ public class AdminClientController extends BaseController {
             request.setAttribute("client",client);
         }
 
-        return "client/add_update";
+        return "admin/client/add_update";
     }
 
     /**

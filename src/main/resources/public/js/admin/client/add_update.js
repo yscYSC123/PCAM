@@ -19,13 +19,13 @@ layui.use(['form', 'layer'], function () {
         });
 
         //发送ajax请求
-        var url = ctx + "/client/add";
+        var url = ctx + "/adminClient/add";
 
         //通过用户的id判断当前需要执行添加操作是否为修改操作
         var clientId = $("[name='id']").val();
         console.log(clientId);
         if (clientId != null && clientId != ''){
-            url = ctx + "/client/update";
+            url = ctx + "/adminClient/update";
         }
 
         $.post(url,data.field,function (result) {

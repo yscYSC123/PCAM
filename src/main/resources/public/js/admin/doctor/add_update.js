@@ -13,7 +13,7 @@ layui.use(['upload', 'element','form', 'layer'], function () {
 
     var uploadInst = upload.render({
         elem: '#test1'
-        ,url: ctx+'/doctor/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
+        ,url: ctx+'/adminDoctor/upload' //此处用的是第三方的 http 请求演示，实际使用时改成您自己的上传接口即可。
         ,before: function(obj){
             //预读本地文件示例，不支持ie8
             obj.preview(function(index, file, result){
@@ -59,14 +59,14 @@ layui.use(['upload', 'element','form', 'layer'], function () {
         });
 
         //发送ajax请求
-        var url = ctx + "/doctor/add";
+        var url = ctx + "/adminDoctor/add";
 
         //通过用户的id判断当前需要执行添加操作是否为修改操作
         var doctorId = $("[name='id']").val();
         console.log(doctorId);
         console.log($("[name='img']").val());
         if (doctorId != null && doctorId != ''){
-            url = ctx + "/doctor/update";
+            url = ctx + "/adminDoctor/update";
         }
 
         $.post(url,data.field,function (result) {
