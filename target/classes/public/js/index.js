@@ -39,7 +39,7 @@ layui.use(['form','jquery','jquery_cookie'], function () {
                     layer.msg("登录成功！",function (){
                         $.cookie("userIdStr",result.result.userIdStr);
                         $.cookie("userName",result.result.userName);
-                        $.cookie("trueName",result.result.trueName);
+                        $.cookie("trueName",result.result.name);
                         switch (result.result.level) {
                             case 0:window.location.href = ctx + "/main"; break;
                             case 1:window.location.href = ctx + "/main1"; break;

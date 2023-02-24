@@ -28,7 +28,6 @@ public class IndexController extends BaseController {
 
     @RequestMapping("register")
     public String register(){
-        System.out.println(1);
         return "register";
     }
 

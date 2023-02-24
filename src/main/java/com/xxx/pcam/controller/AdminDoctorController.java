@@ -90,7 +90,9 @@ public class AdminDoctorController extends BaseController {
     @PostMapping("update")
     @ResponseBody
     public ResultInfo updateDoctor(Doctor doctor) {
-        doctor.setImg(upload);
+        if (upload != "") {
+            doctor.setImg(upload);
+        }
         adminDoctorService.updateDoctor(doctor);
         return success("数据更新成功！");
     }

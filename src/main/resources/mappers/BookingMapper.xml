@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xxx.pcam.dao.BookingMapper">
+  <resultMap id="BaseResultMap" type="com.xxx.pcam.vo.Booking">
+    <id column="archives_id" jdbcType="INTEGER" property="archivesId" />
+    <result column="client_id" jdbcType="INTEGER" property="clientId" />
+    <result column="doctor_id" jdbcType="INTEGER" property="doctorId" />
+    <result column="client_description" jdbcType="VARCHAR" property="clientDescription" />
+    <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
+    <result column="expect_place" jdbcType="VARCHAR" property="expectPlace" />
+    <result column="expect_time" jdbcType="VARCHAR" property="expectTime" />
+    <result column="start_datetime" jdbcType="TIMESTAMP" property="startDatetime" />
+    <result column="end_datetime" jdbcType="TIMESTAMP" property="endDatetime" />
+    <result column="sub_place" jdbcType="VARCHAR" property="subPlace" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="doc_path" jdbcType="VARCHAR" property="docPath" />
+    <result column="evaluation" jdbcType="VARCHAR" property="evaluation" />
+    <result column="eva_do" jdbcType="INTEGER" property="evaDo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    archives_id, client_id, doctor_id, client_description, apply_time, expect_place, 
+    expect_time, start_datetime, end_datetime, sub_place, status, doc_path, evaluation, 
+    eva_do
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from client_archive
+    where archives_id = #{archivesId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from client_archive
+    where archives_id = #{archivesId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xxx.pcam.vo.Booking">
+    insert into client_archive (archives_id, client_id, doctor_id, 
+      client_description, apply_time, expect_place, 
+      expect_time, start_datetime, end_datetime, 
+      sub_place, status, doc_path, 
+      evaluation, eva_do)
+    values (#{archivesId,jdbcType=INTEGER}, #{clientId,jdbcType=INTEGER}, #{doctorId,jdbcType=INTEGER}, 
+      #{clientDescription,jdbcType=VARCHAR}, #{applyTime,jdbcType=TIMESTAMP}, #{expectPlace,jdbcType=VARCHAR}, 
+      #{expectTime,jdbcType=VARCHAR}, #{startDatetime,jdbcType=TIMESTAMP}, #{endDatetime,jdbcType=TIMESTAMP}, 
+      #{subPlace,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{docPath,jdbcType=VARCHAR}, 
+      #{evaluation,jdbcType=VARCHAR}, #{evaDo,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xxx.pcam.vo.Booking">
+    insert into client_archive
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="archivesId != null">
+        archives_id,
+      </if>
+      <if test="clientId != null">
+        client_id,
+      </if>
+      <if test="doctorId != null">
+        doctor_id,
+      </if>
+      <if test="clientDescription != null">
+        client_description,
+      </if>
+      <if test="applyTime != null">
+        apply_time,
+      </if>
+      <if test="expectPlace != null">
+        expect_place,
+      </if>
+      <if test="expectTime != null">
+        expect_time,
+      </if>
+      <if test="startDatetime != null">
+        start_datetime,
+      </if>
+      <if test="endDatetime != null">
+        end_datetime,
+      </if>
+      <if test="subPlace != null">
+        sub_place,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="docPath != null">
+        doc_path,
+      </if>
+      <if test="evaluation != null">
+        evaluation,
+      </if>
+      <if test="evaDo != null">
+        eva_do,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="archivesId != null">
+        #{archivesId,jdbcType=INTEGER},
+      </if>
+      <if test="clientId != null">
+        #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="clientDescription != null">
+        #{clientDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expectPlace != null">
+        #{expectPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="expectTime != null">
+        #{expectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDatetime != null">
+        #{startDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDatetime != null">
+        #{endDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subPlace != null">
+        #{subPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="docPath != null">
+        #{docPath,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null">
+        #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="evaDo != null">
+        #{evaDo,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xxx.pcam.vo.Booking">
+    update client_archive
+    <set>
+      <if test="clientId != null">
+        client_id = #{clientId,jdbcType=INTEGER},
+      </if>
+      <if test="doctorId != null">
+        doctor_id = #{doctorId,jdbcType=INTEGER},
+      </if>
+      <if test="clientDescription != null">
+        client_description = #{clientDescription,jdbcType=VARCHAR},
+      </if>
+      <if test="applyTime != null">
+        apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="expectPlace != null">
+        expect_place = #{expectPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="expectTime != null">
+        expect_time = #{expectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="startDatetime != null">
+        start_datetime = #{startDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endDatetime != null">
+        end_datetime = #{endDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="subPlace != null">
+        sub_place = #{subPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="docPath != null">
+        doc_path = #{docPath,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluation != null">
+        evaluation = #{evaluation,jdbcType=VARCHAR},
+      </if>
+      <if test="evaDo != null">
+        eva_do = #{evaDo,jdbcType=INTEGER},
+      </if>
+    </set>
+    where archives_id = #{archivesId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xxx.pcam.vo.Booking">
+    update client_archive
+    set client_id = #{clientId,jdbcType=INTEGER},
+      doctor_id = #{doctorId,jdbcType=INTEGER},
+      client_description = #{clientDescription,jdbcType=VARCHAR},
+      apply_time = #{applyTime,jdbcType=TIMESTAMP},
+      expect_place = #{expectPlace,jdbcType=VARCHAR},
+      expect_time = #{expectTime,jdbcType=VARCHAR},
+      start_datetime = #{startDatetime,jdbcType=TIMESTAMP},
+      end_datetime = #{endDatetime,jdbcType=TIMESTAMP},
+      sub_place = #{subPlace,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER},
+      doc_path = #{docPath,jdbcType=VARCHAR},
+      evaluation = #{evaluation,jdbcType=VARCHAR},
+      eva_do = #{evaDo,jdbcType=INTEGER}
+    where archives_id = #{archivesId,jdbcType=INTEGER}
+  </update>
+</mapper>

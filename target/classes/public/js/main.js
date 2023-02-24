@@ -12,19 +12,21 @@ layui.use(['element', 'layer', 'layuimini','jquery','jquery_cookie'], function (
      */
     $(".login-out").click(function () {
         //  弹出提示框
-        layer.confirm('确认退出系统吗?', {icon: 3, title:'系统提示'}, function(index){
+        layer.confirm('确认退出系统吗?', {icon: 3, title: '系统提示'}, function (index) {
             //关闭询问框
             layer.close(index);
-
-            //清空cookie信息
-            $.removeCookie("userIdStr",{domain:"localhost",path:"/pcam"});
-            $.removeCookie("userName",{domain:"localhost",path:"/pcam"});
-            $.removeCookie("name",{domain:"localhost",path:"/pcam"});
-            $.removeCookie("level",{domain:"localhost",path:"/pcam"});
-
-            //跳转登录界面
-            window.parent.location.href = ctx + "/index";
-        });
-    });
-
+            $.ajax({
+                url: 'user/logout', // 后端接口，用于注销会话
+                type: 'POST',
+                success: function (result) {
+                    // 跳转到登录页面
+                    window.parent.location.href = ctx + "/index";
+                },
+                error: function () {
+                    // 处理错误情况
+                    layer.msg(result.msg, {icon: 5})
+                }
+            });
+        })
+    })
 });

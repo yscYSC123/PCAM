@@ -51,10 +51,10 @@
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-calendar"></i><span class="layui-left-nav"> 预约</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="clientArchive/index" target="_self"><i class="fa fa-calendar-check-o"></i><span class="layui-left-nav"> 可预约咨询师</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="clientArchive/subAdd" target="_self"><i class="fa fa-calendar-check-o"></i><span class="layui-left-nav"> 可预约咨询师</span></a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="customer_serve/index" target="_self"><i class="fa fa-check "></i><span class="layui-left-nav"> 我的预约</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="clientArchive/subMy" target="_self"><i class="fa fa-check "></i><span class="layui-left-nav"> 我的预约</span></a>
                             </dd>
                         </dl>
                     </li>

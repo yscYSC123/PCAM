@@ -47,6 +47,20 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll layui-left-menu">
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
+<<<<<<< HEAD:src/main/resources/views/admin/main.ftl
+=======
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-calendar"></i><span class="layui-left-nav"> 预约</span> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="clientArchive/subAdd" target="_self"><i class="fa fa-calendar-check-o"></i><span class="layui-left-nav"> 可预约咨询师</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="clientArchive/subMy" target="_self"><i class="fa fa-check "></i><span class="layui-left-nav"> 我的预约</span></a>
+                            </dd>
+                        </dl>
+                    </li>
+>>>>>>> 681035a (修改bug，并完成我的预约页面):target/classes/views/main2.ftl
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips" data-tab="client/index" data-tab-mpi="m-p-i-1" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 用户管理</span></a>
                         </li>

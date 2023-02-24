@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 @RequestMapping("user")
@@ -21,6 +23,7 @@ public class AdminUserController extends BaseController{
 
     @Resource
     private AdminUserService adminUserService;
+
 
     /**
      * 用户登录
@@ -49,6 +52,30 @@ public class AdminUserController extends BaseController{
         }
 
         return resultInfo;
+    }
+
+    /**
+     * 用户退出
+     * @param request
+     * @param response
+     */
+    @PostMapping("logout")
+    public void logout(HttpServletRequest request, HttpServletResponse response) {
+        // 删除会话信息
+        request.getSession().invalidate();
+
+        // 删除JSESSIONID cookie
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if ("JSESSIONID".equals(cookie.getName())) {
+                    cookie.setMaxAge(0);
+                    cookie.setPath("/");
+                    response.addCookie(cookie);
+                    break;
+                }
+            }
+        }
     }
 
     /**
@@ -123,6 +150,19 @@ public class AdminUserController extends BaseController{
             request.setAttribute("user",user);
         }
         return "admin/user/setting";
+    }
+
+    /**
+     * 更新用户
+     *
+     * @param user
+     * @return com.xxx.pcam.base.ResultInfo
+     */
+    @PostMapping("update")
+    @ResponseBody
+    public ResultInfo updateDoctor(User user) {
+        adminUserService.updateUser(user);
+        return success("数据更新成功！");
     }
 
 }

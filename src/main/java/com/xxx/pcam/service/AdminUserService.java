@@ -7,6 +7,7 @@ import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.utils.Md5Util;
 import com.xxx.pcam.utils.PhoneUtil;
 import com.xxx.pcam.utils.UserIDBase64;
+import com.xxx.pcam.vo.Client;
 import com.xxx.pcam.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -74,7 +75,7 @@ public class AdminUserService extends BaseService<User,Integer> {
         checkPwdParam(user,oldPwd,newPwd,repeatPwd);
 
         //设置用户的新密码
-        user.setPwd(Md5Util.encode(newPwd));
+        user.setPwd(newPwd);
 
         //执行更新，判断受影响的行数
         AssertUtil.isTrue(adminUserMapper.updateByPrimaryKeySelective(user) < 1,"修改密码失败！");
@@ -144,6 +145,30 @@ public class AdminUserService extends BaseService<User,Integer> {
 
         // 手机号 格式判断
         AssertUtil.isTrue(!PhoneUtil.isMobile(phone), "手机号格式不正确！");
+    }
+
+    /**
+     * 更新用户
+     * @param user
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void updateUser(User user) {
+        /* 1. 参数校验  */
+        //  营销机会ID  非空，数据库中对应的记录存在
+        AssertUtil.isTrue(null == user.getId(), "待更新记录不存在！");
+        // 通过主键查询对象
+        User temp = adminUserMapper.selectByPrimaryKey(user.getId());
+        // 判断数据库中对应的记录存在
+        AssertUtil.isTrue(temp == null, "待更新记录不存在！");
+        // 参数校验
+        checkUserParams(user.getUserName(), user.getName(), user.getPhone(),user.getId());
+
+        /* 2. 设置相关参数的默认值 */
+        // updateDate更新时间  设置为系统当前时间
+        user.setUpdateDate(new Date());
+        /* 3. 执行更新操作，判断受影响的行数 */
+        AssertUtil.isTrue(adminUserMapper.updateByPrimaryKeySelective(user) != 1, "更新用户失败！");
+
     }
 
 }
