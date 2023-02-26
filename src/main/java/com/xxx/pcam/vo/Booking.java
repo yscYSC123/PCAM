@@ -1,8 +1,12 @@
 package com.xxx.pcam.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.util.Date;
 
 public class Booking {
+
+    private transient String doctorName;
     private Integer archivesId;
 
     private Integer clientId;
@@ -11,14 +15,18 @@ public class Booking {
 
     private String clientDescription;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date applyTime;
 
     private String expectPlace;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private String expectTime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date startDatetime;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private Date endDatetime;
 
     private String subPlace;
@@ -141,5 +149,13 @@ public class Booking {
 
     public void setEvaDo(Integer evaDo) {
         this.evaDo = evaDo;
+    }
+
+    public String getDoctorName() {
+        return doctorName;
+    }
+
+    public void setDoctorName(String doctorName) {
+        this.doctorName = doctorName;
     }
 }

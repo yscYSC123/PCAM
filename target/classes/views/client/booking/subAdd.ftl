@@ -17,6 +17,6 @@
     <script type="text/html" id="imgtmp">
         <img src="images/{{d.img}}" style="width: 50px" height="50px"/>
     </script>
-    <script type="text/javascript" src="${ctx}/js/admin/client/booking/subAdd.js"></script>
+    <script type="text/javascript" src="${ctx}/js/client/booking/subAdd.js"></script>
 </body>
 </html>

@@ -7,8 +7,8 @@ public class UserQuery extends BaseQuery {
     private String userName; // 用户名
     private String email; // 邮箱
     private String phone; // 手机号
-
-    private String level; //状态
+    private String name; // 姓名
+    private String level; //级别
 
     public String getUserName() {
         return userName;
@@ -40,5 +40,13 @@ public class UserQuery extends BaseQuery {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

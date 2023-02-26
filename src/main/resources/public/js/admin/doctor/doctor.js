@@ -57,6 +57,7 @@ layui.use(['table','layer'],function(){
             where: { //设定异步数据接口的额外参数，任意设
                 //通过文本框的值获得参数
                 userName: $("[name='userName']").val()//用户名称
+                ,name: $("[name='name']").val()//用户姓名
                 ,email: $("[name='email']").val()//用户邮箱
                 ,phone:$("[name='phone']").val()//手机号码
             }

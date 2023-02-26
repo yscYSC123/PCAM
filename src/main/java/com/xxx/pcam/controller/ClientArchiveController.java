@@ -2,14 +2,12 @@ package com.xxx.pcam.controller;
 
 import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
+import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.query.UserQuery;
 import com.xxx.pcam.service.AdminDoctorService;
-<<<<<<< HEAD
-=======
 import com.xxx.pcam.service.ClientArchiveService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Booking;
->>>>>>> 681035a (修改bug，并完成我的预约页面)
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,16 +26,12 @@ public class ClientArchiveController extends BaseController {
     private AdminDoctorService adminDoctorService;
     @Resource
     private ClientArchiveService clientArchiveService;
+
     /**
      * 进入预约页面
      */
-<<<<<<< HEAD
-    @RequestMapping("index")
-    public String index(){
-=======
     @RequestMapping("subAdd")
     public String subAdd(){
->>>>>>> 681035a (修改bug，并完成我的预约页面)
         return "client/booking/subAdd";
     }
 
@@ -60,8 +54,6 @@ public class ClientArchiveController extends BaseController {
         return adminDoctorService.queryDoctorByParams(userQuery);
     }
 
-<<<<<<< HEAD
-=======
     /**
      * 进入预约申请
      */
@@ -83,5 +75,14 @@ public class ClientArchiveController extends BaseController {
         return success("数据添加成功！");
     }
 
->>>>>>> 681035a (修改bug，并完成我的预约页面)
+    /**
+     * 展示我的的预约列表
+     * @param bookingQuery
+     * @return
+     */
+    @RequestMapping("list1")
+    @ResponseBody
+    public Map<String, Object> selectByParams(BookingQuery bookingQuery){
+        return clientArchiveService.queryByParams(bookingQuery);
+    }
 }

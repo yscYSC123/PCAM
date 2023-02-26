@@ -38,6 +38,6 @@
             </div>
         </div>
     </form>
-    <script type="text/javascript" src="${ctx}/js/admin/client/booking/toBooking.js"></script>
+    <script type="text/javascript" src="${ctx}/js/client/booking/toBooking.js"></script>
     </body>
 </html>

@@ -152,6 +152,10 @@
       <if test="userName != null and userName != ''">
         and userName like concat('%',#{userName},'%')
       </if>
+      <!-- 用户姓名查询 -->
+      <if test="name != null and name != ''">
+        and name like concat('%',#{name},'%')
+      </if>
       <!-- 邮箱查询 -->
       <if test="email != null and email != ''">
         and email like concat('%',#{email},'%')
