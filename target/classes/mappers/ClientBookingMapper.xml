@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.xxx.pcam.dao.BookingMapper">
+<mapper namespace="com.xxx.pcam.dao.ClientBookingMapper">
   <resultMap id="BaseResultMap" type="com.xxx.pcam.vo.Booking">
     <id column="archives_id" jdbcType="INTEGER" property="archivesId" />
     <result column="client_id" jdbcType="INTEGER" property="clientId" />
@@ -205,6 +205,25 @@
     from
         client_archive c
     inner join user u on u.id = c.doctor_id
+        where c.client_id = #{clientId,jdbcType=INTEGER}
+    <where>
+      <!-- 用户名查询 -->
+      <if test="doctorName != null and doctorName != ''">
+        and u.name like concat('%',#{doctorName},'%')
+      </if>
+      <!-- 状态查询 -->
+      <if test="status != null">
+        and status = #{status}
+      </if>
+    </where>
+  </select>
+  <select id="selectMyCon" parameterType="com.xxx.pcam.query.BookingQuery" resultType="com.xxx.pcam.vo.Booking">
+    select
+    <include refid="Base_Column_List"/>,u.name as doctorName
+    from
+    client_archive c
+    inner join user u on u.id = c.doctor_id
+    where status=2 and c.client_id = #{clientId,jdbcType=INTEGER}
     <where>
       <!-- 用户名查询 -->
       <if test="doctorName != null and doctorName != ''">

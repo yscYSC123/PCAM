@@ -59,7 +59,7 @@
                         </dl>
                     </li>
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-book"></i><span class="layui-left-nav"> 我的咨询</span></a>
+                            <a href="javascript:;" class="layui-menu-tips" data-tab="clientArchive/myCon"><i class="fa fa-book"></i><span class="layui-left-nav"> 我的咨询</span></a>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>

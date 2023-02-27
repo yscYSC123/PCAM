@@ -13,8 +13,10 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.File;
 import java.util.Date;
 
 @Service
@@ -168,7 +170,6 @@ public class AdminUserService extends BaseService<User,Integer> {
         user.setUpdateDate(new Date());
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(adminUserMapper.updateByPrimaryKeySelective(user) != 1, "更新用户失败！");
-
     }
 
 }

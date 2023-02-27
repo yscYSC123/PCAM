@@ -50,7 +50,7 @@ public class IndexController extends BaseController {
         User user = adminUserService.selectByPrimaryKey(userId);
         request.getSession().setAttribute("user",user);
 
-        return "main1";
+        return "doctor/main1";
     }
     @RequestMapping("main2")
     public String main2(HttpServletRequest request){

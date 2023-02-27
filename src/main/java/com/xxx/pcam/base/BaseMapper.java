@@ -45,6 +45,7 @@ public interface BaseMapper<T,ID> {
      * @return
      */
     public List<T> selectByParams(BaseQuery baseQuery) throws DataAccessException;
+    public List<T> selectMyCon(BaseQuery baseQuery) throws DataAccessException;
 
 
     /**

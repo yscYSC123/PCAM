@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>心理咨询预约管理系统</title>
-    <#include "common.ftl">
+    <#include "../common.ftl">
 </head>
 <body class="layui-layout-body layuimini-all">1
 <div class="layui-layout layui-layout-admin">
@@ -28,7 +28,7 @@
                 <a href="javascript:;">${(user.userName)!""}</a>
                 <dl class="layui-nav-child">
                     <dd>
-                        <a href="javascript:;" data-iframe-tab="${ctx}/adminDoctor/toSettingPage" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
+                        <a href="javascript:;" data-iframe-tab="${ctx}/user/toSettingPage" data-title="基本资料" data-icon="fa fa-gears">基本资料</a>
                     </dd>
                     <dd>
                         <a href="javascript:;" data-iframe-tab="${ctx}/user/toPasswordPage" data-title="修改密码" data-icon="fa fa-gears">修改密码</a>
@@ -51,7 +51,7 @@
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-briefcase"></i><span class="layui-left-nav"> 咨询工作</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="customer_serve/index" target="_self"><i class="fa fa-hourglass-start"></i><span class="layui-left-nav"> 咨询申请</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="doctorArchive/conAdd" target="_self"><i class="fa fa-hourglass-start"></i><span class="layui-left-nav"> 咨询申请</span></a>
                             </dd>
                             <dd>
                                 <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="customer_serve/index" target="_self"><i class="fa fa-hourglass-half "></i><span class="layui-left-nav"> 咨询中</span></a>

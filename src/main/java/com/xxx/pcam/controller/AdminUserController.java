@@ -4,6 +4,7 @@ import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.exceptions.ParamsException;
 import com.xxx.pcam.model.UserModel;
+import com.xxx.pcam.service.AdminDoctorService;
 import com.xxx.pcam.service.AdminUserService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.User;
@@ -11,11 +12,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 @RequestMapping("user")
@@ -24,6 +29,8 @@ public class AdminUserController extends BaseController{
     @Resource
     private AdminUserService adminUserService;
 
+
+    static String upload = "";
 
     /**
      * 用户登录
@@ -100,7 +107,7 @@ public class AdminUserController extends BaseController{
      */
     @PostMapping("updatePwd")
     @ResponseBody
-    public ResultInfo updatePwd(HttpServletRequest request,String oldPwd,String newPwd,String repeatPwd){
+    public ResultInfo updatePwd(HttpServletRequest request,String oldPwd,String newPwd,String repeatPwd, HttpServletResponse response){
         ResultInfo resultInfo = new ResultInfo();
 
        try {
@@ -108,6 +115,21 @@ public class AdminUserController extends BaseController{
             Integer userId = LoginUserUtil.releaseUserIdFromCookie(request);
             // 调用Service层修改密码方法
             adminUserService.updatePwd(userId, oldPwd, newPwd, repeatPwd);
+           // 删除会话信息
+           request.getSession().invalidate();
+
+           // 删除JSESSIONID cookie
+           Cookie[] cookies = request.getCookies();
+           if (cookies != null) {
+               for (Cookie cookie : cookies) {
+                   if ("JSESSIONID".equals(cookie.getName())) {
+                       cookie.setMaxAge(0);
+                       cookie.setPath("/");
+                       response.addCookie(cookie);
+                       break;
+                   }
+               }
+           }
 
         } catch (ParamsException p) {
             resultInfo.setCode(p.getCode());
@@ -152,6 +174,19 @@ public class AdminUserController extends BaseController{
         return "admin/user/setting";
     }
 
+    @RequestMapping("upload")
+    @ResponseBody
+    public Map<String,Object> upload(MultipartFile file) {
+        upload = AdminDoctorService.upload(file);
+        HashMap<Object, Object> temp = new HashMap<>();
+        temp.put("src",upload);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",temp);
+        return map;
+    }
+
     /**
      * 更新用户
      *
@@ -160,7 +195,10 @@ public class AdminUserController extends BaseController{
      */
     @PostMapping("update")
     @ResponseBody
-    public ResultInfo updateDoctor(User user) {
+    public ResultInfo update(User user) {
+        if (upload != "") {
+            user.setImg(upload);
+        }
         adminUserService.updateUser(user);
         return success("数据更新成功！");
     }

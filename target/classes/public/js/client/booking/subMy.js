@@ -30,21 +30,33 @@ layui.use(['table','layer','jquery'],function(){
             //fixed:固定列
             {type:'space'}
             ,{field: 'doctorName', title: '咨询师姓名',align:'center'}
-            ,{field: 'applyTime', title: '预约时间',align:'center'}
+            ,{field: 'expectTime', title: '预约时间',align:'center'}
             ,{field: 'subPlace', title: '咨询地点',align:'center'}
+            ,{field: 'clientDescription', title: '情况描述',align:'center'}
             ,{field: 'status', title: '状态',align:'center',templet: function (d) {
                     //调用函数，返回格式化的结果
                     return formatState(d.status);
             }}
+            , {title: '操作', templet: function (d) {
+                    //调用函数，返回格式化的结果
+                    return buttonState(d.status);
+                }, field: 'right', align: 'center', minWidth: 150}
         ]]
     });
+    function buttonState(status) {
+        if(status == 0){
+            return "<a class=\"layui-btn layui-btn-xs\" lay-event=\"toAgain\">重新预约</a>"
+        }else{
+            return "<a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"toCancel\">取消预约</a>"
+        }
+    }
 
     function formatState(status) {
-        if(status == 0){
-            return "<div style='color: yellow'>预约中<div/>"
-        }else if (status == 1){
+        if(status == 1){
+            return "<div style='color: orange'>预约中<div/>"
+        }else if (status == 2){
             return "<div style='color: green'>预约成功<div/>"
-        } else if(status == 2){
+        } else if(status == 0){
             return "<div style='color: red'>预约失败<div/>"
         }
     }
@@ -69,6 +81,62 @@ layui.use(['table','layer','jquery'],function(){
             }
         });
     });
+
+    /**
+     * 监听行工具栏
+     */
+    table.on('tool(users)',function (data) {
+        if (data.event == "toAgain"){
+            openAgain(data);
+        }else if (data.event == "toCancel"){
+            openCancel(data);
+        }
+    });
+
+    //打开预约申请页面
+    function openAgain(data){
+        var data = data.data;
+        console.log(data);
+        var title = "<h3>预约申请</h3>";
+        var url = ctx + "/clientArchive/toBooking";
+        //iframe层
+        layui.layer.open({
+            type: 2,
+            title: title,
+            area: ['660px', '500px'],
+            content: url, //iframe的url
+            maxmin:true
+            ,success:function (layero, index) {
+                // 获取子页面的iframe
+                var iframe = window['layui-layer-iframe'+index];
+                // 向子页面的全局函数child传参
+                iframe.child(data);
+            }
+        });
+    }
+    //打开取消理由页面
+    function openCancel(data) {
+        console.log(data.data);
+        layer.confirm('确认取消预约吗?', {icon: 3, title: '系统提示'}, function (index) {
+            //关闭询问框
+            layer.close(index);
+            $.ajax({
+                url: ctx + "/clientArchive/cancel", // 后端接口
+                type: 'POST',
+                data: data.data,
+                success:function (result) {
+                    //判断删除结果
+                    if(result.code == 200){
+                        layer.msg("删除成功！",{icon:6});
+                        //刷新父窗口
+                        parent.location.reload();
+                    }else {
+                        layer.msg(result.msg,{icon: 5});
+                    }
+                }
+            });
+        })
+    }
 
 
 });

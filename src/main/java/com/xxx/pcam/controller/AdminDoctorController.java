@@ -44,6 +44,7 @@ public class AdminDoctorController extends BaseController {
     @ResponseBody
     public ResultInfo addDoctor(Doctor doctor) {
         doctor.setImg(upload);
+        upload="";
         adminDoctorService.addDoctor(doctor);
         return success("数据添加成功！");
     }
@@ -108,25 +109,6 @@ public class AdminDoctorController extends BaseController {
         map.put("msg","");
         map.put("data",temp);
         return map;
-    }
-
-    /**
-     * 进入个人信息的页面
-     *
-     * @param
-     * @return java.lang.String
-     */
-    @RequestMapping("toSettingPage")
-    public String toSettingPage(Integer id, HttpServletRequest request) {
-
-        // 判断id是否为空，不为空表示更新操作，查询用户对象
-        if (id != null) {
-            // 通过id查询用户对象
-            User user = adminDoctorService.selectByPrimaryKey(id);
-            // 将数据设置到请求域中
-            request.setAttribute("user",user);
-        }
-        return "admin/doctor/setting";
     }
 
 }

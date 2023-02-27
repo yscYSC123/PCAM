@@ -70,7 +70,7 @@ public class AdminDoctorService extends BaseService<Doctor,Integer> {
         // updateDate 默认是系统当前时间
         doctor.setUpdateDate(new Date());
         // 3. 执行添加操作，判断受影响的行数
-        AssertUtil.isTrue(adminDoctorMapper.insertSelective(doctor) != 1, "添加营销机会失败！");
+        AssertUtil.isTrue(adminDoctorMapper.insertSelective(doctor) != 1, "添加失败！");
 
     }
 
@@ -120,7 +120,7 @@ public class AdminDoctorService extends BaseService<Doctor,Integer> {
         // updateDate更新时间  设置为系统当前时间
         doctor.setUpdateDate(new Date());
         /* 3. 执行更新操作，判断受影响的行数 */
-        AssertUtil.isTrue(adminDoctorMapper.updateByPrimaryKeySelective(doctor) != 1, "更新营销机会失败！");
+        AssertUtil.isTrue(adminDoctorMapper.updateByPrimaryKeySelective(doctor) != 1, "更新失败！");
     }
 
     public static String upload(MultipartFile file) {

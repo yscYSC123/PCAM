@@ -66,7 +66,7 @@ public class AdminClientService extends BaseService<Client,Integer> {
         // updateDate 默认是系统当前时间
         client.setUpdateDate(new Date());
         // 3. 执行添加操作，判断受影响的行数
-        AssertUtil.isTrue(adminClientMapper.insertSelective(client) != 1, "添加营销机会失败！");
+        AssertUtil.isTrue(adminClientMapper.insertSelective(client) != 1, "添加失败！");
 
     }
 
@@ -116,7 +116,7 @@ public class AdminClientService extends BaseService<Client,Integer> {
         // updateDate更新时间  设置为系统当前时间
         client.setUpdateDate(new Date());
         /* 3. 执行更新操作，判断受影响的行数 */
-        AssertUtil.isTrue(adminClientMapper.updateByPrimaryKeySelective(client) != 1, "更新营销机会失败！");
+        AssertUtil.isTrue(adminClientMapper.updateByPrimaryKeySelective(client) != 1, "更新失败！");
 
     }
 }

@@ -58,7 +58,9 @@
                 <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
             </script>
         </form>
-
+        <script type="text/html" id="imgtmp">
+            <img src="images/{{d.img}}" style="width: 50px" height="50px"/>
+        </script>
     <script type="text/javascript" src="${ctx}/js/admin/client/client.js"></script>
     </body>
 </html>

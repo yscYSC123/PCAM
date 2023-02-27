@@ -8,6 +8,7 @@ import com.xxx.pcam.service.AdminDoctorService;
 import com.xxx.pcam.service.ClientArchiveService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Booking;
+import com.xxx.pcam.vo.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,6 +45,14 @@ public class ClientArchiveController extends BaseController {
     }
 
     /**
+     * 进入我的咨询页面
+     */
+    @RequestMapping("myCon")
+    public String myCon(){
+        return "client/consultation/myCon";
+    }
+
+    /**
      * 展示可预约的咨询师列表
      * @param userQuery
      * @return
@@ -63,16 +72,30 @@ public class ClientArchiveController extends BaseController {
     }
 
     /**
-     * 添加
+     * 预约
      */
     @PostMapping("add")
     @ResponseBody
     public ResultInfo subAdd(Booking booking,HttpServletRequest request) {
         Integer clientId = LoginUserUtil.releaseUserIdFromCookie(request);
         booking.setClientId(clientId);
-        booking.setStatus(0);
+        booking.setStatus(1);
         clientArchiveService.subAdd(booking);
         return success("数据添加成功！");
+    }
+
+    /**
+     * 取消预约
+     *
+     * @param booking
+     * @return com.xxx.pcam.base.ResultInfo
+     */
+    @PostMapping("cancel")
+    @ResponseBody
+    public ResultInfo cancel(Booking booking) {
+        // 调用Service层的添加方法
+        clientArchiveService.cancel(booking);
+        return success("数据更新成功！");
     }
 
     /**
@@ -82,7 +105,24 @@ public class ClientArchiveController extends BaseController {
      */
     @RequestMapping("list1")
     @ResponseBody
-    public Map<String, Object> selectByParams(BookingQuery bookingQuery){
+    public Map<String, Object> selectByParams(BookingQuery bookingQuery,HttpServletRequest request){
+        Integer clientId = LoginUserUtil.releaseUserIdFromCookie(request);
+        bookingQuery.setClientId(clientId);
         return clientArchiveService.queryByParams(bookingQuery);
     }
+
+    /**
+     * 展示我的的预约列表
+     * @param bookingQuery
+     * @return
+     */
+    @RequestMapping("list2")
+    @ResponseBody
+    public Map<String, Object> selectMyCon(BookingQuery bookingQuery,HttpServletRequest request){
+        Integer clientId = LoginUserUtil.releaseUserIdFromCookie(request);
+        bookingQuery.setClientId(clientId);
+        return clientArchiveService.queryMyCon(bookingQuery);
+    }
+
+
 }

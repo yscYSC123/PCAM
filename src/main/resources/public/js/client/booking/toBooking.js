@@ -11,10 +11,15 @@ function child(dataFromFather) {
             ,min: 0
             ,max: 15
         });
-        // 获取数据对象
-        var da = { doctorName: dataFromFather.name, name: 'Layui' };
-        // 将数据对象与表单绑定
-        form.val('example', da);
+        if (dataFromFather.doctorName==undefined) {
+            // 获取数据对象
+            var da = {doctorName: dataFromFather.name, name: 'Layui'};
+            // 将数据对象与表单绑定
+            form.val('example', da);
+        }else{
+            var da = {doctorName: dataFromFather.doctorName, name: 'Layui'};
+            form.val('example', da);
+        }
 
         form.on('submit(add)', function (data) {
             //加载层
@@ -23,8 +28,11 @@ function child(dataFromFather) {
                 time: false,
                 shade: 0.8
             });
-
-            data.field.doctorId = dataFromFather.id;
+            if (dataFromFather.doctorId==undefined) {
+                data.field.doctorId = dataFromFather.id;
+            }else{
+                data.field.doctorId = dataFromFather.doctorId;
+            }
             //发送ajax请求
             var url = ctx + "/clientArchive/add";
             $.post(url, data.field, function (result) {

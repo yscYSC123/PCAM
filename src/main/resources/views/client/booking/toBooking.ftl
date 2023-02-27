@@ -8,7 +8,7 @@
         <div class="layui-form-item layui-row layui-col-xs12">
             <label class="layui-form-label">咨询师</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" autocomplete="off" name="doctorName">
+                <input readonly="true" type="text" class="layui-input" name="doctorName">
             </div>
         </div>
         <div class="layui-form-item layui-row layui-col-xs12">

@@ -15,9 +15,9 @@
                         <div class="layui-input-inline">
                             <select name="status"  id="status">
                                 <option value="" >状态</option>
-                                <option value="0">预约中</option>
-                                <option value="1" >预约成功</option>
-                                <option value="2" >预约失败</option>
+                                <option value="1">预约中</option>
+                                <option value="2" >预约成功</option>
+                                <option value="0" >预约失败</option>
                             </select>
                         </div>
                         <a class="layui-btn search_btn" data-type="reload">
@@ -30,7 +30,6 @@
 
             <table id="userList" class="layui-table"  lay-filter="users"></table>
         </form>
-
-    <script type="text/javascript" src="${ctx}/js/client/booking/subMy.js"></script>
+        <script type="text/javascript" src="${ctx}/js/client/booking/subMy.js"></script>
     </body>
 </html>

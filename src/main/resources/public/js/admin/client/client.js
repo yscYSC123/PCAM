@@ -30,6 +30,7 @@ layui.use(['table','layer'],function(){
             //fixed:固定列
             {type:'checkbox'}
             ,{field: 'id', title: '编号', sort: true,width: 80}
+            ,{field: 'img', title: '咨询师照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
             ,{field: 'userName', title: '用户昵称',align:'center',style: 'height: 50px;'}
             ,{field: 'pwd', title: '用户密码',align:'center'}
             ,{field: 'name', title: '真实姓名',align:'center',width: 100}
@@ -51,9 +52,9 @@ layui.use(['table','layer'],function(){
         if(level == 0){
             return "<div style='color: red'>管理员<div/>"
         }else if (level == 1){
-            return "<div style='color: green'>咨询师<div/>"
+            return "<div style='color: orange'>咨询师<div/>"
         }else {
-            return "<div style='color: yellow'>来访者<div/>"
+            return "<div style='color: green'>来访者<div/>"
         }
     }
 
@@ -189,7 +190,7 @@ layui.use(['table','layer'],function(){
         layui.layer.open({
             type: 2,
             title: title,
-            area: ['550px', '550px'],
+            area: ['550px', '790px'],
             content: url, //iframe的url
             maxmin:true
         });

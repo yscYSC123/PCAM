@@ -6,6 +6,8 @@ public class BookingQuery extends BaseQuery {
 
     private Integer doctorId;   //咨询师id
 
+    private Integer clientId;      //来访者id
+
     private String doctorName;      //咨询师姓名
 
     private Integer status;     //状态
@@ -32,5 +34,13 @@ public class BookingQuery extends BaseQuery {
 
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
+    }
+
+    public Integer getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(Integer clientId) {
+        this.clientId = clientId;
     }
 }

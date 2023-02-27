@@ -4,15 +4,18 @@ import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.UserQuery;
 import com.xxx.pcam.service.AdminClientService;
+import com.xxx.pcam.service.AdminDoctorService;
 import com.xxx.pcam.vo.Client;
 import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -21,6 +24,8 @@ public class AdminClientController extends BaseController {
 
     @Resource
     private AdminClientService adminClientService;
+
+    static String upload = "";
 
     /**
      * 进入用户列表页面
@@ -42,6 +47,8 @@ public class AdminClientController extends BaseController {
     @PostMapping("add")
     @ResponseBody
     public ResultInfo addClient(Client client) {
+        client.setImg(upload);
+        upload="";
         adminClientService.addClient(client);
         return success("数据添加成功！");
     }
@@ -88,10 +95,25 @@ public class AdminClientController extends BaseController {
     @PostMapping("update")
     @ResponseBody
     public ResultInfo updateClient(Client client) {
+        if (upload != "") {
+            client.setImg(upload);
+        }
         // 调用Service层的添加方法
         adminClientService.updateClient(client);
         return success("数据更新成功！");
     }
 
+    @RequestMapping("upload")
+    @ResponseBody
+    public Map<String,Object> upload(MultipartFile file) {
+        upload = AdminDoctorService.upload(file);
+        HashMap<Object, Object> temp = new HashMap<>();
+        temp.put("src",upload);
+        Map<String,Object> map=new HashMap<>();
+        map.put("code",0);
+        map.put("msg","");
+        map.put("data",temp);
+        return map;
+    }
 
 }

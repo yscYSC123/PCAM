@@ -7,6 +7,19 @@
         <form class="layui-form" style="width:80%;">
             <!-- 设置用户id的隐藏域 -->
             <input type="hidden" name="id" value="${(client.id)!}">
+            <div class="layui-upload">
+                <button type="button" class="layui-btn" id="test1" style="margin-left: 190px">上传图片</button>
+                <div class="layui-upload-list">
+                    <input type="hidden" name="img" id="img" value="${(client.img)!}">
+                    <img class="layui-upload-img" id="demo1" src="images/${(client.img)!}" style="margin-left: 190px">
+                    <p id="demoText"></p>
+                </div>
+                <div style="width: 95px;margin-left: 190px;margin-bottom: 10px">
+                    <div class="layui-progress layui-progress-big" lay-showpercent="yes" lay-filter="demo">
+                        <div class="layui-progress-bar" lay-percent=""></div>
+                    </div>
+                </div>
+            </div>
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">用户昵称</label>
                 <div class="layui-input-block">
