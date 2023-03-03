@@ -1,4 +1,4 @@
-layui.use(['table','layer'],function() {
+layui.use(['table','layer','jquery'],function() {
     var layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery,
         table = layui.table;
@@ -29,7 +29,7 @@ layui.use(['table','layer'],function() {
             //sort:是否排序
             //fixed:固定列
             {type:'space'}
-            ,{field: 'clientId', title: '来访者姓名',align:'center'}
+            ,{field: 'clientName', title: '来访者姓名',align:'center'}
             ,{field: 'expectTime', title: '预约时间',align:'center'}
             ,{field: 'subPlace', title: '咨询地点',align:'center'}
             ,{field: 'clientDescription', title: '情况描述',align:'center'}
@@ -51,25 +51,75 @@ layui.use(['table','layer'],function() {
         }
     }
 
+    $(".search_btn").click(function () {
+        /**
+         * 表格重载
+         *  多条件查询
+         */
+        tableIns.reload({
+            where: { //设定异步数据接口的额外参数，任意设
+                //通过文本框的值获得参数
+                clientName: $("[name='clientName']").val()//用户名称
+            }
+            ,page: {
+                curr: 1 //重新从第 1 页开始
+            }
+        });
+    });
+
     /**
      * 监听行工具栏
      */
     table.on('tool(users)',function (data) {
-        if (data.event == "toMessage"){
-            openToMessage(data.data.id);
-        }else if (data.event == "toBooking"){
-            openToBooking(data);
+        if (data.event == "agree"){
+            agree(data);
+        }else if (data.event == "refuse"){
+            refuse(data);
         }
     });
 
-    //打开发送信息页面
-    function openToMessage(id){
-
+    //同意
+    function agree(data){
+        var data = data.data;
+        console.log(data);
+        var title = "<h3>预约申请</h3>";
+        var url = ctx + "/doctorArchive/toAgree";
+        //iframe层
+        layui.layer.open({
+            type: 2,
+            title: title,
+            area: ['660px', '500px'],
+            content: url, //iframe的url
+            maxmin:true
+            ,success:function (layero, index) {
+                // 获取子页面的iframe
+                var iframe = window['layui-layer-iframe'+index];
+                // 向子页面的全局函数child传参
+                iframe.child(data);
+            }
+        });
     }
 
-    //打开预约页面
-    function openToBooking(data){
-
+    //拒绝
+    function refuse(data){
+        layer.confirm('确认取消预约吗?', {icon: 3, title: '系统提示'}, function (index) {
+            //关闭询问框
+            layer.close(index);
+            $.ajax({
+                url: ctx + "/doctorArchive/refuse", // 后端接口
+                type: 'POST',
+                data: data.data,
+                success: function (result) {
+                    //判断删除结果
+                    if (result.code == 200) {
+                        layer.msg("取消成功！", {icon: 6});
+                        //刷新父窗口
+                        parent.location.reload();
+                    } else {
+                        layer.msg(result.msg, {icon: 5});
+                    }
+                }
+            });
+        })
     }
-
 })

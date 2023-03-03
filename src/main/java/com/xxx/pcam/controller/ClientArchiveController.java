@@ -8,7 +8,6 @@ import com.xxx.pcam.service.AdminDoctorService;
 import com.xxx.pcam.service.ClientArchiveService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Booking;
-import com.xxx.pcam.vo.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -112,7 +111,7 @@ public class ClientArchiveController extends BaseController {
     }
 
     /**
-     * 展示我的的预约列表
+     * 展示我的的咨询列表
      * @param bookingQuery
      * @return
      */

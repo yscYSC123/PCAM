@@ -10,15 +10,7 @@
                 <form class="layui-form">
                     <div class="layui-inline">
                         <div class="layui-input-inline">
-                            <input type="text" name="userName" class="layui-input searchVal" placeholder="咨询师姓名" />
-                        </div>
-                        <div class="layui-input-inline">
-                            <select name="level"  id="level">
-                                <option value="" >状态</option>
-                                <option value="0">管理员</option>
-                                <option value="1" >咨询师</option>
-                                <option value="2" >来访者</option>
-                            </select>
+                            <input type="text" name="doctorName" class="layui-input searchVal" placeholder="咨询师姓名" />
                         </div>
                         <a class="layui-btn search_btn" data-type="reload">
                             <i class="layui-icon">&#xe615;</i>

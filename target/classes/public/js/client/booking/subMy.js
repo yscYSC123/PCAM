@@ -127,7 +127,7 @@ layui.use(['table','layer','jquery'],function(){
                 success:function (result) {
                     //判断删除结果
                     if(result.code == 200){
-                        layer.msg("删除成功！",{icon:6});
+                        layer.msg("取消成功！",{icon:6});
                         //刷新父窗口
                         parent.location.reload();
                     }else {

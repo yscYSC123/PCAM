@@ -7,8 +7,6 @@ import com.xxx.pcam.dao.ClientBookingMapper;
 import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.vo.Booking;
-import com.xxx.pcam.vo.Client;
-import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -91,6 +89,5 @@ public class ClientArchiveService extends BaseService<Booking,Integer> {
         booking.setStatus(0);
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(clientBookingMapper.updateByPrimaryKeySelective(booking) != 1, "取消失败！");
-
     }
 }

@@ -8,6 +8,9 @@ import java.util.Date;
 public class Booking {
 
     private transient String doctorName;
+
+    private transient String clientName;
+
     private Integer archivesId;
 
     private Integer clientId;
@@ -160,5 +163,13 @@ public class Booking {
 
     public void setDoctorName(String doctorName) {
         this.doctorName = doctorName;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public void setClientName(String clientName) {
+        this.clientName = clientName;
     }
 }

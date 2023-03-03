@@ -5,9 +5,12 @@ import com.github.pagehelper.PageInfo;
 import com.xxx.pcam.base.BaseService;
 import com.xxx.pcam.dao.DoctorBookingMapper;
 import com.xxx.pcam.query.BookingQuery;
+import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.vo.Booking;
 import com.xxx.pcam.vo.Consultation;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
@@ -41,5 +44,18 @@ public class DoctorArchiveService extends BaseService<Consultation,Integer> {
         map.put("data",pageInfo.getList());
 
         return map;
+    }
+
+    /**
+     * 取消
+     * @param consultation
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void refuse(Consultation consultation) {
+        /* 2. 设置相关参数的默认值 */
+        // updateDate更新时间  设置为系统当前时间
+        consultation.setStatus(0);
+        /* 3. 执行更新操作，判断受影响的行数 */
+        AssertUtil.isTrue(doctorBookingMapper.updateByPrimaryKeySelective(consultation) != 1, "取消失败！");
     }
 }

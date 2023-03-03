@@ -64,7 +64,6 @@ layui.use(['table','layer','jquery'],function(){
             where: { //设定异步数据接口的额外参数，任意设
                 //通过文本框的值获得参数
                 doctorName: $("[name='doctorName']").val()//用户名称
-                ,status:$("[name='status']").val()//状态
             }
             ,page: {
                 curr: 1 //重新从第 1 页开始
