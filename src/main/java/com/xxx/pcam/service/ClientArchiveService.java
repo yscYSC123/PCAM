@@ -90,4 +90,13 @@ public class ClientArchiveService extends BaseService<Booking,Integer> {
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(clientBookingMapper.updateByPrimaryKeySelective(booking) != 1, "取消失败！");
     }
+
+    /**
+     * 更新
+     * @param booking
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void update(Booking booking) {
+        AssertUtil.isTrue(clientBookingMapper.updateByPrimaryKeySelective(booking) != 1, "更新失败！");
+    }
 }

@@ -54,7 +54,7 @@
                                 <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="doctorArchive/conAdd" target="_self"><i class="fa fa-hourglass-start"></i><span class="layui-left-nav"> 咨询申请</span></a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="customer_serve/index" target="_self"><i class="fa fa-hourglass-half "></i><span class="layui-left-nav"> 咨询中</span></a>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="doctorArchive/conMy" target="_self"><i class="fa fa-hourglass-half "></i><span class="layui-left-nav"> 咨询中</span></a>
                             </dd>
                         </dl>
                     </li>

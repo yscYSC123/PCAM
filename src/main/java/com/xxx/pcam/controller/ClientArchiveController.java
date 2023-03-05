@@ -123,5 +123,18 @@ public class ClientArchiveController extends BaseController {
         return clientArchiveService.queryMyCon(bookingQuery);
     }
 
+    /**
+     * 更新
+     * @param booking
+     * @return
+     */
+    @PostMapping("update")
+    @ResponseBody
+    public ResultInfo update(Booking booking) {
+        // 调用Service层的添加方法
+        clientArchiveService.update(booking);
+        return success("数据更新成功！");
+    }
+
 
 }

@@ -22,11 +22,6 @@
 
             <table id="userList" class="layui-table"  lay-filter="users"></table>
 
-            <!--操作-->
-            <script id="userListBar" type="text/html">
-                <a class="layui-btn layui-btn-xs" id="edit" lay-event="edit">编辑</a>
-                <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="del">删除</a>
-            </script>
         </form>
 
     <script type="text/javascript" src="${ctx}/js/client/consultation/myCon.js"></script>
