@@ -7,35 +7,30 @@ function child(dataFromFather) {
 
         //常规用法
         laydate.render({
-            elem: '#test-limit2'
-            ,min: 0
-            ,max: 15
+            elem: '#test4'
+            ,type: 'time'
         });
-        if (dataFromFather.doctorName==undefined) {
-            // 获取数据对象
-            var da = {doctorName: dataFromFather.name, name: 'Layui'};
-            // 将数据对象与表单绑定
-            form.val('example', da);
-        }else{
-            var da = {doctorName: dataFromFather.doctorName, name: 'Layui'};
-            form.val('example', da);
-        }
-
-        form.on('submit(add)', function (data) {
+        laydate.render({
+            elem: '#test5'
+            ,type: 'time'
+        });
+        var da = {clientName: dataFromFather.clientName, name: 'Layui'};
+        // 将数据对象与表单绑定
+        form.val('example', da);
+        var ba = {archivesId: dataFromFather.archivesId, name: 'Layui'};
+        // 将数据对象与表单绑定
+        form.val('example', ba);
+        form.on('submit(add)', function (dataFromFather) {
+            console.log(dataFromFather.field);
             //加载层
             var index = layer.msg("提交数据中，请稍后...", {
                 icon: 16,
                 time: false,
                 shade: 0.8
             });
-            if (dataFromFather.doctorId==undefined) {
-                data.field.doctorId = dataFromFather.id;
-            }else{
-                data.field.doctorId = dataFromFather.doctorId;
-            }
             //发送ajax请求
-            var url = ctx + "/clientArchive/add";
-            $.post(url, data.field, function (result) {
+            var url = ctx + "/doctorArchive/add";
+            $.post(url, dataFromFather.field, function (result) {
                 //判断操作是否添加成功
                 if (result.code == 200) {
                     layer.msg("操作成功！", {icon: 6});

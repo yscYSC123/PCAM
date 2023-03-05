@@ -8,11 +8,13 @@ import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.vo.Booking;
 import com.xxx.pcam.vo.Consultation;
+import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +46,41 @@ public class DoctorArchiveService extends BaseService<Consultation,Integer> {
         map.put("data",pageInfo.getList());
 
         return map;
+    }
+
+    public Map<String, Object> queryByParams1(BookingQuery bookingQuery) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        // 开启分页
+        PageHelper.startPage(bookingQuery.getPage(), bookingQuery.getLimit());
+        // 得到对应分页对象
+        PageInfo<Consultation> pageInfo = new PageInfo<>(doctorBookingMapper.selectByParams1(bookingQuery));
+
+        // 设置map对象
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",pageInfo.getTotal());
+        // 设置分页好的列表
+        map.put("data",pageInfo.getList());
+
+        return map;
+    }
+
+    /**
+     * 预约申请
+     * @param consultation
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void conAdd(Consultation consultation) {
+        Consultation temp = doctorBookingMapper.selectByPrimaryKey(consultation.getArchivesId());
+        // 判断数据库中对应的记录存在
+        AssertUtil.isTrue(temp == null, "待更新记录不存在！");
+        // createDate创建时间 默认是系统当前时间
+        consultation.setApplyTime(new Date());
+        // 3. 执行添加操作，判断受影响的行数
+        AssertUtil.isTrue(doctorBookingMapper.updateByPrimaryKeySelective(consultation) != 1, "添加失败！");
+
     }
 
     /**

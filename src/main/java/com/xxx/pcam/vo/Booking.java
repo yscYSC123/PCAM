@@ -27,13 +27,13 @@ public class Booking {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     private String expectTime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date startDatetime;
+    @DateTimeFormat(pattern = "HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT+8")
+    private String startDatetime;
 
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
-    private Date endDatetime;
+    @DateTimeFormat(pattern = "HH:mm:ss")
+    @JsonFormat(pattern = "HH:mm:ss",timezone = "GMT+8")
+    private String endDatetime;
 
     private String subPlace;
 
@@ -101,19 +101,19 @@ public class Booking {
         this.expectTime = expectTime == null ? null : expectTime.trim();
     }
 
-    public Date getStartDatetime() {
+    public String getStartDatetime() {
         return startDatetime;
     }
 
-    public void setStartDatetime(Date startDatetime) {
+    public void setStartDatetime(String startDatetime) {
         this.startDatetime = startDatetime;
     }
 
-    public Date getEndDatetime() {
+    public String getEndDatetime() {
         return endDatetime;
     }
 
-    public void setEndDatetime(Date endDatetime) {
+    public void setEndDatetime(String endDatetime) {
         this.endDatetime = endDatetime;
     }
 

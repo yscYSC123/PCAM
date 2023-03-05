@@ -5,9 +5,6 @@
     <#include "../../common.ftl">
 </head>
 <body class="childrenBody" style="height: 400px">
-    <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">
-        <legend>咨询申请</legend>
-    </fieldset>
     <div class="layui-form">
         <blockquote class="layui-elem-quote quoteBox">
             <form class="layui-form">

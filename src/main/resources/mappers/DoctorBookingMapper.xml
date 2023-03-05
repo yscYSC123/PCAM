@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xxx.pcam.dao.DoctorBookingMapper">
-  <resultMap id="BaseResultMap" type="com.xxx.pcam.vo.Booking">
+  <resultMap id="BaseResultMap" type="com.xxx.pcam.vo.Consultation">
     <id column="archives_id" jdbcType="INTEGER" property="archivesId" />
     <result column="client_id" jdbcType="INTEGER" property="clientId" />
     <result column="doctor_id" jdbcType="INTEGER" property="doctorId" />
@@ -9,8 +9,8 @@
     <result column="apply_time" jdbcType="TIMESTAMP" property="applyTime" />
     <result column="expect_place" jdbcType="VARCHAR" property="expectPlace" />
     <result column="expect_time" jdbcType="VARCHAR" property="expectTime" />
-    <result column="start_datetime" jdbcType="TIMESTAMP" property="startDatetime" />
-    <result column="end_datetime" jdbcType="TIMESTAMP" property="endDatetime" />
+    <result column="start_datetime" jdbcType="VARCHAR" property="startDatetime" />
+    <result column="end_datetime" jdbcType="VARCHAR" property="endDatetime" />
     <result column="sub_place" jdbcType="VARCHAR" property="subPlace" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="doc_path" jdbcType="VARCHAR" property="docPath" />
@@ -209,6 +209,25 @@
       <if test="doctorId != null">
         AND c.doctor_id = #{doctorId,jdbcType=INTEGER}
         AND status = 1
+      </if>
+      <!-- 用户名查询 -->
+      <if test="clientName != null and clientName != ''">
+        AND u.name LIKE CONCAT('%', #{clientName}, '%')
+      </if>
+    </where>
+  </select>
+
+  <!-- 多条件查询 -->
+  <select id="selectByParams1" parameterType="com.xxx.pcam.query.BookingQuery" resultType="com.xxx.pcam.vo.Consultation">
+    select
+    <include refid="Base_Column_List"/>,u.name as clientName
+    from
+    client_archive c
+    inner join user u on u.id = c.client_id
+    <where>
+      <if test="doctorId != null">
+        AND c.doctor_id = #{doctorId,jdbcType=INTEGER}
+        AND status = 2
       </if>
       <!-- 用户名查询 -->
       <if test="clientName != null and clientName != ''">

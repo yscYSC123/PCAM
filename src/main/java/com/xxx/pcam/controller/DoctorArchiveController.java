@@ -5,6 +5,7 @@ import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.service.DoctorArchiveService;
 import com.xxx.pcam.utils.LoginUserUtil;
+import com.xxx.pcam.vo.Booking;
 import com.xxx.pcam.vo.Consultation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,14 @@ public class DoctorArchiveController extends BaseController {
     }
 
     /**
+     * 进入咨询申请页面
+     */
+    @RequestMapping("conMy")
+    public String conMy(){
+        return "doctor/consultation/conMy";
+    }
+
+    /**
      * 展示来访者列表
      * @param bookingQuery
      * @return
@@ -44,11 +53,35 @@ public class DoctorArchiveController extends BaseController {
     }
 
     /**
+     * 展示咨询中列表
+     * @param bookingQuery
+     * @return
+     */
+    @RequestMapping("list1")
+    @ResponseBody
+    public Map<String, Object> selectByParams1(BookingQuery bookingQuery,HttpServletRequest request){
+        Integer doctor = LoginUserUtil.releaseUserIdFromCookie(request);
+        bookingQuery.setDoctorId(doctor);
+        return doctorArchiveService.queryByParams1(bookingQuery);
+    }
+
+    /**
      * 进入同意页面
      */
     @RequestMapping("toAgree")
     public String toBooking(){
         return "doctor/consultation/toAgree";
+    }
+
+    /**
+     * 预约
+     */
+    @PostMapping("add")
+    @ResponseBody
+    public ResultInfo conAdd(Consultation consultation) {
+        consultation.setStatus(2);
+        doctorArchiveService.conAdd(consultation);
+        return success("数据添加成功！");
     }
 
     /**

@@ -5,28 +5,30 @@
 </head>
 <body class="childrenBody">
 <form class="layui-form" style="width:80%;" lay-filter="example">
+    <!-- 设置用户id的隐藏域 -->
+    <input type="hidden" name="archivesId">
     <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">咨询师</label>
+        <label class="layui-form-label">来访者</label>
         <div class="layui-input-block">
-            <input readonly="true" type="text" class="layui-input" name="doctorName">
+            <input readonly="true" type="text" class="layui-input" name="clientName">
         </div>
     </div>
-    <div class="layui-form-item layui-row layui-col-xs12">
-        <label class="layui-form-label">咨询时间</label>
+    <div class="layui-form-item">
+        <label class="layui-form-label">开始时间</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" id="test-limit2" placeholder="yyyy-MM-dd" name="expectTime" value="${(booking.expectTime)!}" placeholder="请输入咨询时间">
+            <input type="text" class="layui-input" id="test4" placeholder="HH:mm:ss" name="startDatetime" value="${(booking.startDatetime)!}" placeholder="请输入开始时间">
+        </div>
+    </div>
+    <div class="layui-form-item">
+        <label class="layui-form-label">结束时间</label>
+        <div class="layui-input-block">
+            <input type="text" class="layui-input" id="test5" placeholder="HH:mm:ss" name="endDatetime" value="${(booking.endDatetime)!}" placeholder="请输入结束时间">
         </div>
     </div>
     <div class="layui-form-item layui-row layui-col-xs12">
         <label class="layui-form-label">咨询地点</label>
         <div class="layui-input-block">
-            <input type="text" class="layui-input" lay-verify="required" name="expectPlace" value="${(booking.expectPlace)!}" placeholder="请输入咨询地点">
-        </div>
-    </div>
-    <div class="layui-form-item layui-form-text layui-row layui-col-xs12">
-        <label class="layui-form-label">情况描述</label>
-        <div class="layui-input-block">
-            <textarea placeholder="请输入内容" class="layui-textarea" lay-verify="required" name="clientDescription" value="${(booking.clientDescription)!}"></textarea>
+            <input type="text" class="layui-input" lay-verify="required" name="subPlace" value="${(booking.subPlace)!}" placeholder="请输入咨询地点">
         </div>
     </div>
 

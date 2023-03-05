@@ -29,9 +29,10 @@ layui.use(['table','layer','jquery'],function() {
             //sort:是否排序
             //fixed:固定列
             {type:'space'}
+            ,{field: 'archivesId', title: '编号', sort: true,width: 80}
             ,{field: 'clientName', title: '来访者姓名',align:'center'}
             ,{field: 'expectTime', title: '预约时间',align:'center'}
-            ,{field: 'subPlace', title: '咨询地点',align:'center'}
+            ,{field: 'expectPlace', title: '预约地点',align:'center'}
             ,{field: 'clientDescription', title: '情况描述',align:'center'}
             ,{field: 'status', title: '状态',align:'center',templet: function (d) {
                     //调用函数，返回格式化的结果
@@ -43,7 +44,7 @@ layui.use(['table','layer','jquery'],function() {
 
     function formatState(status) {
         if(status == 1){
-            return "<div style='color: yellow'>预约中<div/>"
+            return "<div style='color: orange'>预约中<div/>"
         }else if (status == 2){
             return "<div style='color: green'>预约成功<div/>"
         } else if(status == 0){
@@ -81,14 +82,13 @@ layui.use(['table','layer','jquery'],function() {
     //同意
     function agree(data){
         var data = data.data;
-        console.log(data);
         var title = "<h3>预约申请</h3>";
         var url = ctx + "/doctorArchive/toAgree";
         //iframe层
         layui.layer.open({
             type: 2,
             title: title,
-            area: ['660px', '500px'],
+            area: ['500px', '550px'],
             content: url, //iframe的url
             maxmin:true
             ,success:function (layero, index) {
