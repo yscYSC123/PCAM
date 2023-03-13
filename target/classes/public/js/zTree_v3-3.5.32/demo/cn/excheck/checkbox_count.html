@@ -49,7 +49,7 @@
 
 		var clearFlag = false;
 		function onCheck(e, treeId, treeNode) {
-			count();
+			countQuery();
 			if (clearFlag) {
 				clearCheckedOldNodes();
 			}
@@ -61,7 +61,7 @@
 				nodes[i].checkedOld = nodes[i].checked;
 			}
 		}
-		function count() {
+		function countQuery() {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
 			checkCount = zTree.getCheckedNodes(true).length,
 			nocheckCount = zTree.getCheckedNodes(false).length,
@@ -73,7 +73,7 @@
 		}
 		function createTree() {
 			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
-			count();
+			countQuery();
 			clearFlag = $("#last").attr("checked");
 		}
 

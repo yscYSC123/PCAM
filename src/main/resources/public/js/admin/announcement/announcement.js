@@ -13,7 +13,7 @@ layui.use(['table','layer'],function(){
         //单元格的最小宽度
         ,cellMinWidth:95
         //访问数据的url，后台的数据接口
-        ,url: ctx + '/adminClient/list'
+        ,url: ctx + '/announcement/list'
         //开启分页
         ,page: true
         //每页显示的数量
@@ -29,34 +29,14 @@ layui.use(['table','layer'],function(){
             //sort:是否排序
             //fixed:固定列
             {type:'checkbox'}
-            ,{field: 'id', title: '编号', sort: true,width: 80}
-            ,{field: 'img', title: '咨询师照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
-            ,{field: 'userName', title: '用户昵称',align:'center',style: 'height: 50px;'}
-            ,{field: 'pwd', title: '用户密码',align:'center'}
-            ,{field: 'name', title: '真实姓名',align:'center',width: 100}
-            ,{field: 'sex', title: '性别',align:'center',width: 80}
-            ,{field: 'age', title: '年龄',align:'center',width: 80}
-            ,{field: 'email', title: '用户邮箱',align:'center'}
-            ,{field: 'phone', title: '联系电话',align:'center'}
-            ,{field: 'createDate', title: '创建时间',align:'center'}
-            ,{field: 'updateDate', title: '修改时间',align:'center'}
-            ,{field: 'level', title: '角色',align:'center',templet: function (d) {
-                    //调用函数，返回格式化的结果
-                    return formatState(d.level);
-                }}
+            ,{field: 'id', title: '编号', sort: true}
+            ,{field: 'title', title: '公告标题',align:'center'}
+            ,{field: 'context', title: '公告内容',align:'center'}
+            ,{field: 'createrId', title: '创建者Id',align:'center'}
+            ,{field: 'createTime', title: '创建时间',align:'center'}
             ,{title: '操作',templet:'#userListBar',field: 'right',align: 'center',minWidth:150}
         ]]
     });
-
-    function formatState(level) {
-        if(level == 0){
-            return "<div style='color: red'>管理员<div/>"
-        }else if (level == 1){
-            return "<div style='color: orange'>咨询师<div/>"
-        }else {
-            return "<div style='color: green'>来访者<div/>"
-        }
-    }
 
     /**
      * 搜索按钮的点击事件
@@ -70,11 +50,8 @@ layui.use(['table','layer'],function(){
         tableIns.reload({
             where: { //设定异步数据接口的额外参数，任意设
                 //通过文本框的值获得参数
-                userName: $("[name='userName']").val()//用户名称
-                ,name: $("[name='name']").val()//用户姓名
-                ,email: $("[name='email']").val()//用户邮箱
-                ,phone:$("[name='phone']").val()//手机号码
-                ,level:$("[name='level']").val()//角色
+                id: $("[name='id']").val()//公告编号
+                ,title: $("[name='title']").val()//公告标题
             }
             ,page: {
                 curr: 1 //重新从第 1 页开始
@@ -107,7 +84,7 @@ layui.use(['table','layer'],function(){
         }
 
         //询问是否删除
-        layer.confirm('您确定要删除选中的记录吗？',{icon:3,title:'用户管理'},function (index) {
+        layer.confirm('您确定要删除选中的记录吗？',{icon:3,title:'公告管理'},function (index) {
             layer.close(index);
             //传递的参数是数组
             var ids = "ids=";
@@ -123,7 +100,7 @@ layui.use(['table','layer'],function(){
             //发送ajax请求，执行删除操作
             $.ajax({
                 type:"post",
-                url:ctx + "/adminClient/delete",
+                url:ctx + "/announcement/delete",
                 data:ids,
                 success:function (result) {
                     //判断删除结果
@@ -155,11 +132,11 @@ layui.use(['table','layer'],function(){
      * @param id
      */
     function deleteUser(id) {
-        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"用户管理"},function (index) {
+        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"公告管理"},function (index) {
             layer.close(index);
             $.ajax({
                 type:"post",
-                url:ctx + "/adminClient/delete",
+                url:ctx + "/announcement/delete",
                 data:{
                     ids:id
                 },
@@ -179,18 +156,18 @@ layui.use(['table','layer'],function(){
 
     //打开添加或修改用户页面
     function openAddOrUpdateUserDialog(id) {
-        var title = "<h3>添加用户</h3>";
-        var url = ctx + "/adminClient/toClientPage";
+        var title = "<h3>添加公告</h3>";
+        var url = ctx + "/announcement/toPage";
         //判断id是否为空
         if (id != null && id != ''){
-            title = "<h3>更新用户</h3>";
+            title = "<h3>更新公告</h3>";
             url += '?id=' + id;
         }
         //iframe层
         layui.layer.open({
             type: 2,
             title: title,
-            area: ['550px', '790px'],
+            area: ['520px', '330px'],
             content: url, //iframe的url
             maxmin:true
         });

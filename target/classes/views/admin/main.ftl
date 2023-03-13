@@ -9,10 +9,7 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-logo">
-            <a href="">
-                <img src="images/logo.png" alt="logo">
                 <h1>管理员</h1>
-            </a>
         </div>
         <a>
             <div class="layuimini-tool">
@@ -48,10 +45,10 @@
         <div class="layui-side-scroll layui-left-menu">
                 <ul class="layui-nav layui-nav-tree layui-left-nav-tree layui-this" id="currency">
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips" data-tab="adminClient/index" data-tab-mpi="m-p-i-1" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 用户管理</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="adminClient/index" target="_self"><i class="fa fa-user"></i><span class="layui-left-nav"> 用户管理</span></a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips" data-tab="adminDoctor/index" data-tab-mpi="m-p-i-1" target="_self"><i class="fa fa-user-circle-o"></i><span class="layui-left-nav"> 咨询师管理</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="adminDoctor/index" target="_self"><i class="fa fa-user-circle-o"></i><span class="layui-left-nav"> 咨询师管理</span></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>
@@ -65,7 +62,7 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告管理</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告管理</span></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言管理</span></a>

@@ -46,7 +46,9 @@ layui.use(['table','layer','jquery'],function(){
 
     function formatState(status) {
         if(status == 3){
-            return "<div style='color: blue'>咨询结束<div/>"
+            return "<div style='color: blue'>咨询完成<div/>"
+        }else{
+            return "<div style='color: green'>预约成功<div/>"
         }
     }
 
@@ -91,8 +93,6 @@ layui.use(['table','layer','jquery'],function(){
                         //判断更新结果
                         if(result.code == 200){
                             layer.msg("评价成功！",{icon:6});
-                            //刷新表格
-                            tableIns.reload();
                         }else {
                             layer.msg(result.msg,{icon: 5});
                         }

@@ -26,7 +26,7 @@ public class AdminClientService extends BaseService<Client,Integer> {
     private AdminClientMapper adminClientMapper;
 
     /**
-     * 多条件分页查询营销机会 （返回的数据格式必须满足LayUi中数据表格要求的格式）
+     * 多条件分页查询 （返回的数据格式必须满足LayUi中数据表格要求的格式）
      *
      * @param userQuery
      * @return java.util.Map<java.lang.String,java.lang.Object>

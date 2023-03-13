@@ -35,6 +35,11 @@ public class AdminClientController extends BaseController {
         return "admin/client/client";
     }
 
+    /**
+     * 分页多条件查询
+     * @param userQuery
+     * @return
+     */
     @RequestMapping("list")
     @ResponseBody
     public Map<String, Object> selectByParams(UserQuery userQuery){
@@ -83,7 +88,7 @@ public class AdminClientController extends BaseController {
     public ResultInfo deleteClient(Integer[] ids) {
         // 调用Service层的删除方法
         adminClientService.deleteBatch(ids);
-        return success("营销机会数据删除成功！");
+        return success("数据删除成功！");
     }
 
     /**

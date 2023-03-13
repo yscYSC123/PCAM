@@ -9,10 +9,7 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-logo">
-            <a href="">
-                <img src="images/logo.png" alt="logo">
                 <h1>咨询师</h1>
-            </a>
         </div>
         <a>
             <div class="layuimini-tool">
@@ -59,7 +56,7 @@
                         </dl>
                     </li>
                         <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-book"></i><span class="layui-left-nav"> 咨询记录</span></a>
+                            <a href="javascript:;" class="layui-menu-tips" data-tab="doctorArchive/record"><i class="fa fa-book"></i><span class="layui-left-nav"> 咨询记录</span></a>
                         </li>
                         <li class="layui-nav-item">
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>

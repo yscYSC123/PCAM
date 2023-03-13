@@ -229,7 +229,7 @@
     <where>
       <if test="clientId != null">
         AND c.client_id = #{clientId,jdbcType=INTEGER}
-        AND status = 3
+        AND status > 1
       </if>
       <!-- 用户名查询 -->
       <if test="doctorName != null and doctorName != ''">

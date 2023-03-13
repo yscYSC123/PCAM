@@ -3,20 +3,17 @@ package com.xxx.pcam.service;
 import com.xxx.pcam.base.BaseService;
 import com.xxx.pcam.dao.AdminUserMapper;
 import com.xxx.pcam.model.UserModel;
+import com.xxx.pcam.query.CountQuery;
 import com.xxx.pcam.utils.AssertUtil;
-import com.xxx.pcam.utils.Md5Util;
 import com.xxx.pcam.utils.PhoneUtil;
 import com.xxx.pcam.utils.UserIDBase64;
-import com.xxx.pcam.vo.Client;
 import com.xxx.pcam.vo.User;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
-import java.io.File;
 import java.util.Date;
 
 @Service
@@ -172,4 +169,7 @@ public class AdminUserService extends BaseService<User,Integer> {
         AssertUtil.isTrue(adminUserMapper.updateByPrimaryKeySelective(user) != 1, "更新用户失败！");
     }
 
+    public User count(CountQuery countQuery) {
+        return adminUserMapper.count(countQuery);
+    }
 }

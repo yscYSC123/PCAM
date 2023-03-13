@@ -35,17 +35,17 @@
 		};
 
 		var zNodes =[
-			{name:"500个节点", id:"1", count:500, times:1, isParent:true},
-			{name:"1000个节点", id:"2", count:1000, times:1, isParent:true},
-			{name:"2000个节点", id:"3", count:2000, times:1, isParent:true}
+			{name:"500个节点", id:"1", countQuery:500, times:1, isParent:true},
+			{name:"1000个节点", id:"2", countQuery:1000, times:1, isParent:true},
+			{name:"2000个节点", id:"3", countQuery:2000, times:1, isParent:true}
 		];
 
 		var log, className = "dark",
 		startTime = 0, endTime = 0, perCount = 100, perTime = 100;
 		function getUrl(treeId, treeNode) {
 			var curCount = (treeNode.children) ? treeNode.children.length : 0;
-			var getCount = (curCount + perCount) > treeNode.count ? (treeNode.count - curCount) : perCount;
-			var param = "id="+treeNode.id+"_"+(treeNode.times++) +"&count="+getCount;
+			var getCount = (curCount + perCount) > treeNode.countQuery ? (treeNode.countQuery - curCount) : perCount;
+			var param = "id="+treeNode.id+"_"+(treeNode.times++) +"&countQuery="+getCount;
 			return "../asyncData/getNodesForBigData.php?" + param;
 		}
 		function beforeExpand(treeId, treeNode) {
@@ -64,7 +64,7 @@
 				return;
 			}
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
-			totalCount = treeNode.count;
+			totalCount = treeNode.countQuery;
 			if (treeNode.children.length < totalCount) {
 				setTimeout(function() {ajaxGetNodes(treeNode);}, perTime);
 			} else {

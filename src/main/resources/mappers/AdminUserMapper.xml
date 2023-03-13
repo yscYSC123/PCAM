@@ -218,5 +218,13 @@
     userName = #{userName}
   </select>
 
+  <!-- 统计 -->
+  <select id="count" parameterType="com.xxx.pcam.query.CountQuery" resultType="com.xxx.pcam.vo.User">
+    SELECT
+      SUM(CASE WHEN level = 0 THEN 1 ELSE 0 END) AS userCount,
+      SUM(CASE WHEN level = 1 THEN 1 ELSE 0 END) AS doctorCount,
+      SUM(CASE WHEN level = 2 THEN 1 ELSE 0 END) AS clientCount
+    FROM user;
+  </select>
 
 </mapper>

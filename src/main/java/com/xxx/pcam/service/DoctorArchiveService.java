@@ -8,7 +8,6 @@ import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.vo.Booking;
 import com.xxx.pcam.vo.Consultation;
-import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -67,6 +66,25 @@ public class DoctorArchiveService extends BaseService<Consultation,Integer> {
         return map;
     }
 
+    public Map<String, Object> queryByParams2(BookingQuery bookingQuery) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        // 开启分页
+        PageHelper.startPage(bookingQuery.getPage(), bookingQuery.getLimit());
+        // 得到对应分页对象
+        PageInfo<Consultation> pageInfo = new PageInfo<>(doctorBookingMapper.selectByParams2(bookingQuery));
+
+        // 设置map对象
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",pageInfo.getTotal());
+        // 设置分页好的列表
+        map.put("data",pageInfo.getList());
+
+        return map;
+    }
+
     /**
      * 预约申请
      * @param consultation
@@ -94,5 +112,15 @@ public class DoctorArchiveService extends BaseService<Consultation,Integer> {
         consultation.setStatus(0);
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(doctorBookingMapper.updateByPrimaryKeySelective(consultation) != 1, "取消失败！");
+    }
+
+    /**
+     * 更新
+     * @param consultation
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public void update(Consultation consultation) {
+        consultation.setStatus(3);
+        AssertUtil.isTrue(doctorBookingMapper.updateByPrimaryKeySelective(consultation) != 1, "更新失败！");
     }
 }

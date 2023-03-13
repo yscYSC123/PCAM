@@ -51,7 +51,7 @@
 		];
 
 		function onCheck(e, treeId, treeNode) {
-			count();
+			countQuery();
 		}
 
 		function setTitle(node) {
@@ -63,7 +63,7 @@
 				zTree.updateNode(n);
 			}
 		}
-		function count() {
+		function countQuery() {
 			function isForceHidden(node) {
 				if (!node.parentTId) return false;
 				var p = node.getParentNode();
@@ -94,7 +94,7 @@
 			nodes = zTree.getNodesByParam("isHidden", true);
 			zTree.showNodes(nodes);
 			setTitle();
-			count();
+			countQuery();
 		}
 		function hideNodes() {
 			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
@@ -105,7 +105,7 @@
 			}
 			zTree.hideNodes(nodes);
 			setTitle();
-			count();
+			countQuery();
 		}
 
 		$(document).ready(function(){
@@ -113,7 +113,7 @@
 			$("#hideNodesBtn").bind("click", {type:"rename"}, hideNodes);
 			$("#showNodesBtn").bind("click", {type:"icon"}, showNodes);
 			setTitle();
-			count();
+			countQuery();
 		});
 		//-->
 	</SCRIPT>

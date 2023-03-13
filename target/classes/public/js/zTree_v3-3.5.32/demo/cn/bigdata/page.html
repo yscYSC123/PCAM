@@ -35,11 +35,11 @@
 		};
 
 		var zNodes =[
-			{name:"分页测试", t:"请点击分页按钮", id:"1", count:2000, page:0, pageSize:100, isParent:true}
+			{name:"分页测试", t:"请点击分页按钮", id:"1", countQuery:2000, page:0, pageSize:100, isParent:true}
 		];
 		var curPage = 0;
 		function getUrl(treeId, treeNode) {
-			var param = "id="+ treeNode.id +"_"+treeNode.page +"&count="+treeNode.pageSize,
+			var param = "id="+ treeNode.id +"_"+treeNode.page +"&countQuery="+treeNode.pageSize,
 			aObj = $("#" + treeNode.tId + "_a");
 			aObj.attr("title", "当前第 " + treeNode.page + " 页 / 共 " + treeNode.maxPage + " 页")
 			return "../asyncData/getNodesForBigData.php?" + param;
@@ -80,7 +80,7 @@
 			var prev = $("#prevBtn_"+treeNode.id);
 			var next = $("#nextBtn_"+treeNode.id);
 			var last = $("#lastBtn_"+treeNode.id);
-			treeNode.maxPage = Math.round(treeNode.count/treeNode.pageSize - .5) + (treeNode.count%treeNode.pageSize == 0 ? 0:1);
+			treeNode.maxPage = Math.round(treeNode.countQuery/treeNode.pageSize - .5) + (treeNode.countQuery%treeNode.pageSize == 0 ? 0:1);
 			first.bind("click", function(){
 				if (!treeNode.isAjaxing) {
 					goPage(treeNode, 1);

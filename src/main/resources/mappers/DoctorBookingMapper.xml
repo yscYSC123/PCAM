@@ -235,4 +235,23 @@
       </if>
     </where>
   </select>
+
+  <!-- 多条件查询 -->
+  <select id="selectByParams2" parameterType="com.xxx.pcam.query.BookingQuery" resultType="com.xxx.pcam.vo.Consultation">
+    select
+    <include refid="Base_Column_List"/>,u.name as clientName
+    from
+    client_archive c
+    inner join user u on u.id = c.client_id
+    <where>
+      <if test="doctorId != null">
+        AND c.doctor_id = #{doctorId,jdbcType=INTEGER}
+        AND status = 3
+      </if>
+      <!-- 用户名查询 -->
+      <if test="clientName != null and clientName != ''">
+        AND u.name LIKE CONCAT('%', #{clientName}, '%')
+      </if>
+    </where>
+  </select>
 </mapper>

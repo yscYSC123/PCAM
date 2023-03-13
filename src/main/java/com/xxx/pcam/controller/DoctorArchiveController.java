@@ -5,7 +5,6 @@ import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.BookingQuery;
 import com.xxx.pcam.service.DoctorArchiveService;
 import com.xxx.pcam.utils.LoginUserUtil;
-import com.xxx.pcam.vo.Booking;
 import com.xxx.pcam.vo.Consultation;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,11 +31,19 @@ public class DoctorArchiveController extends BaseController {
     }
 
     /**
-     * 进入咨询申请页面
+     * 进入咨询中页面
      */
     @RequestMapping("conMy")
     public String conMy(){
         return "doctor/consultation/conMy";
+    }
+
+    /**
+     * 进入咨询记录页面
+     */
+    @RequestMapping("record")
+    public String record(){
+        return "doctor/consultation/record";
     }
 
     /**
@@ -63,6 +70,19 @@ public class DoctorArchiveController extends BaseController {
         Integer doctor = LoginUserUtil.releaseUserIdFromCookie(request);
         bookingQuery.setDoctorId(doctor);
         return doctorArchiveService.queryByParams1(bookingQuery);
+    }
+
+    /**
+     * 展示咨询中列表
+     * @param bookingQuery
+     * @return
+     */
+    @RequestMapping("list2")
+    @ResponseBody
+    public Map<String, Object> selectByParams2(BookingQuery bookingQuery,HttpServletRequest request){
+        Integer doctor = LoginUserUtil.releaseUserIdFromCookie(request);
+        bookingQuery.setDoctorId(doctor);
+        return doctorArchiveService.queryByParams2(bookingQuery);
     }
 
     /**
@@ -95,6 +115,19 @@ public class DoctorArchiveController extends BaseController {
     public ResultInfo refuse(Consultation consultation) {
         // 调用Service层的添加方法
         doctorArchiveService.refuse(consultation);
+        return success("数据更新成功！");
+    }
+
+    /**
+     * 更新
+     * @param consultation
+     * @return
+     */
+    @PostMapping("update")
+    @ResponseBody
+    public ResultInfo update(Consultation consultation) {
+        // 调用Service层的添加方法
+        doctorArchiveService.update(consultation);
         return success("数据更新成功！");
     }
 

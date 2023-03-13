@@ -207,6 +207,7 @@
     inner join user u on u.id = c.doctor_id
     <where>
       <if test="clientId != null">
+        and status != 3
         AND c.client_id = #{clientId,jdbcType=INTEGER}
       </if>
       <!-- 用户名查询 -->
@@ -228,7 +229,7 @@
     <where>
       <if test="clientId != null">
         AND c.client_id = #{clientId,jdbcType=INTEGER}
-        AND status = 2
+        AND status > 1
       </if>
       <!-- 用户名查询 -->
       <if test="doctorName != null and doctorName != ''">

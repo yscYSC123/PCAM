@@ -9,10 +9,7 @@
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-logo">
-            <a href="">
-                <img src="images/logo.png" alt="logo">
                 <h1>来访者</h1>
-            </a>
         </div>
         <a>
             <div class="layuimini-tool">

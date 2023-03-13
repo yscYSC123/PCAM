@@ -4,6 +4,7 @@ import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.exceptions.ParamsException;
 import com.xxx.pcam.model.UserModel;
+import com.xxx.pcam.query.CountQuery;
 import com.xxx.pcam.service.AdminDoctorService;
 import com.xxx.pcam.service.AdminUserService;
 import com.xxx.pcam.utils.LoginUserUtil;
@@ -201,6 +202,13 @@ public class AdminUserController extends BaseController{
         }
         adminUserService.updateUser(user);
         return success("数据更新成功！");
+    }
+
+    @PostMapping("count")
+    @ResponseBody
+    public User count(CountQuery countQuery) {
+        // 调用Service层的count方法
+        return  adminUserService.count(countQuery);
     }
 
 }

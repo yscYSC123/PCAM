@@ -31,7 +31,7 @@ layui.use(['table','layer','jquery'],function(){
             {type:'space'}
             ,{field: 'doctorName', title: '咨询师姓名',align:'center'}
             ,{field: 'expectTime', title: '预约时间',align:'center'}
-            ,{field: 'subPlace', title: '咨询地点',align:'center'}
+            ,{field: 'expectPlace', title: '期望咨询地点',align:'center'}
             ,{field: 'clientDescription', title: '情况描述',align:'center'}
             ,{field: 'status', title: '状态',align:'center',templet: function (d) {
                     //调用函数，返回格式化的结果

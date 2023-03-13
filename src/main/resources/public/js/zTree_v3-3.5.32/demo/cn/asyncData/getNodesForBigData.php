@@ -5,8 +5,8 @@ if(array_key_exists( 'id',$_REQUEST)) {
 	$pId=$_REQUEST['id'];
 }
 $pCount = "10";
-if(array_key_exists( 'count',$_REQUEST)) {
-	$pCount=$_REQUEST['count'];
+if(array_key_exists( 'countQuery',$_REQUEST)) {
+	$pCount=$_REQUEST['countQuery'];
 }
 if ($pId==null || $pId=="") $pId = "0";
 if ($pCount==null || $pCount=="") $pCount = "10";

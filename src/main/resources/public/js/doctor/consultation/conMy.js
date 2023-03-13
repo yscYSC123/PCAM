@@ -39,27 +39,13 @@ layui.use(['table','layer','jquery'],function(){
                     //调用函数，返回格式化的结果
                     return formatState(d.status);
             }}
-            , {title: '操作', templet: function (d) {
-                    //调用函数，返回格式化的结果
-                    return buttonState(d.status);
-                }, field: 'right', align: 'center', minWidth: 150}
+            ,{field: 'docPath', title: '咨询建议',align:'center',event: 'setEva', style:'cursor: pointer;'}
         ]]
     });
-    function buttonState(status) {
-        if(status == 0){
-            return "<a class=\"layui-btn layui-btn-xs\" lay-event=\"toAgain\">重新预约</a>"
-        }else{
-            return "<a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"toCancel\">取消预约</a>"
-        }
-    }
 
     function formatState(status) {
-        if(status == 1){
-            return "<div style='color: orange'>预约中<div/>"
-        }else if (status == 2){
-            return "<div style='color: green'>预约成功<div/>"
-        } else if(status == 0){
-            return "<div style='color: red'>预约失败<div/>"
+        if(status == 2){
+            return "<div style='color: green'>咨询中<div/>"
         }
     }
 
@@ -139,5 +125,41 @@ layui.use(['table','layer','jquery'],function(){
         })
     }
 
+    //监听单元格事件
+    table.on('tool(users)', function(obj){
+        var date = obj.data;
+        if(obj.event === 'setEva'){
+            layer.prompt({
+                formType: 2
+                ,title: '咨询建议'
+                ,value: date.evaluation
+            }, function(value, index){
+                layer.close(index);
+                date.evaluation = value;
+
+                //这里一般是发送修改的Ajax请求
+                $.ajax({
+                    url: ctx + "/doctorArchive/update", // 后端接口
+                    type: 'POST',
+                    data: date,
+                    success:function (result) {
+                        //判断更新结果
+                        if(result.code == 200){
+                            layer.msg("评价成功！",{icon:6});
+                            //刷新表格
+                            tableIns.reload();
+                        }else {
+                            layer.msg(result.msg,{icon: 5});
+                        }
+                    }
+                });
+
+                //同步更新表格和缓存对应的值
+                obj.update({
+                    evaluation: value
+                });
+            });
+        }
+    });
 
 });

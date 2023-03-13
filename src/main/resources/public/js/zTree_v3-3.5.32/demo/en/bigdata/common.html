@@ -25,25 +25,25 @@
 			}
 		};
 
-		var dataMaker = function(count) {
+		var dataMaker = function(countQuery) {
 			var nodes = [], pId = -1,
 			min = 10, max = 90, level = 0, curLevel = [], prevLevel = [], levelCount,
 			i = 0,j,k,l,m;
 
-			while (i<count) {
+			while (i<countQuery) {
 				if (level == 0) {
 					pId = -1;
 					levelCount = Math.round(Math.random() * max) + min;
-					for (j=0; j<levelCount && i<count; j++, i++) {
+					for (j=0; j<levelCount && i<countQuery; j++, i++) {
 						var n = {id:i, pId:pId, name:"Big-" +i};
 						nodes.push(n);
 						curLevel.push(n);
 					}
 				} else {
-					for (l=0, m=prevLevel.length; l<m && i<count; l++) {
+					for (l=0, m=prevLevel.length; l<m && i<countQuery; l++) {
 						pId = prevLevel[l].id;
 						levelCount = Math.round(Math.random() * max) + min;
-						for (j=0; j<levelCount && i<count; j++, i++) {
+						for (j=0; j<levelCount && i<countQuery; j++, i++) {
 							var n = {id:i, pId:pId, name:"Big-" +i};
 							nodes.push(n);
 							curLevel.push(n);
@@ -62,7 +62,7 @@
 			ruler: null,
 			cursor: null,
 			minCount: 5000,
-			count: 5000,
+			countQuery: 5000,
 			stepCount:500,
 			minWidth: 30,
 			maxWidth: 215,
@@ -100,7 +100,7 @@
 				var start = ruler.ruler.offset().left+1;
 				var c = Math.max((end - start), ruler.minWidth);
 				c = Math.min(c, ruler.maxWidth);
-				return {width:c, count:(c - ruler.minWidth)*ruler.stepCount + ruler.minCount};
+				return {width:c, countQuery:(c - ruler.minWidth)*ruler.stepCount + ruler.minCount};
 			},
 			drawRuler: function(e, animate) {
 				var c = ruler.getCount(e.clientX);
@@ -110,8 +110,8 @@
 				} else {
 					ruler.cursor.animate({width:c.width}, {duration: "fast",easing: "swing", complete:null});
 				}
-				ruler.count = c.count;
-				ruler.cursor.text(c.count);
+				ruler.countQuery = c.countQuery;
+				ruler.cursor.text(c.countQuery);
 			}
 		}
 		var showNodeCount = 0;
@@ -120,7 +120,7 @@
 		}
 
 		function createTree () {
-			var zNodes = dataMaker(ruler.count);
+			var zNodes = dataMaker(ruler.countQuery);
 			showNodeCount = 0;
 			$("#treeDemo").empty();
 			setting.check.enable = $("#showChk").attr("checked");

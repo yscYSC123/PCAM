@@ -20,7 +20,7 @@
         <div class="layui-form-item layui-row layui-col-xs12">
             <label class="layui-form-label">咨询地点</label>
             <div class="layui-input-block">
-                <input type="text" class="layui-input" lay-verify="required" name="expectPlace" value="${(booking.expectPlace)!}" placeholder="请输入咨询地点">
+                <input type="text" class="layui-input" lay-verify="required" name="expectPlace" value="${(booking.expectPlace)!}" placeholder="请输入期望咨询地点">
             </div>
         </div>
         <div class="layui-form-item layui-form-text layui-row layui-col-xs12">
