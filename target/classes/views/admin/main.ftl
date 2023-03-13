@@ -65,7 +65,7 @@
                         <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告管理</span></a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言管理</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="guestbook/index" target="_self"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言管理</span></a>
                     </li>
                     <span class="layui-nav-bar" style="top: 201px; height: 0px; opacity: 0;"></span>
                 </ul>
