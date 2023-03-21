@@ -6,7 +6,6 @@ import com.xxx.pcam.query.AnnouncementQuery;
 import com.xxx.pcam.service.AnnouncementService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Announcement;
-import com.xxx.pcam.vo.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -101,4 +102,17 @@ public class AnnouncementController extends BaseController {
         announcementService.update(announcement);
         return success("数据更新成功！");
     }
+
+    /**
+     * 主页公告显示
+     * @return
+     * @throws SQLException
+     */
+    @PostMapping("show")
+    @ResponseBody
+    public List<String> show() throws SQLException {
+        // 调用Service层的添加方法
+        return announcementService.show();
+    }
+
 }

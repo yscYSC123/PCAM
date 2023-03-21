@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -75,7 +77,7 @@ public class GuestBookController extends BaseController {
     }
 
     /**
-     * 删除用户
+     * 删除留言
      *
      * @param ids
      * @return com.xxxx.crm.base.ResultInfo
@@ -100,5 +102,17 @@ public class GuestBookController extends BaseController {
         // 调用Service层的添加方法
         guestBookService.update(guestbook);
         return success("数据更新成功！");
+    }
+
+    /**
+     * 主页留言显示
+     * @return
+     * @throws SQLException
+     */
+    @PostMapping("show")
+    @ResponseBody
+    public List<String> show() throws SQLException {
+        // 调用Service层的添加方法
+        return guestBookService.show();
     }
 }

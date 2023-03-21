@@ -7,16 +7,14 @@ import com.xxx.pcam.dao.AnnouncementMapper;
 import com.xxx.pcam.query.AnnouncementQuery;
 import com.xxx.pcam.utils.AssertUtil;
 import com.xxx.pcam.vo.Announcement;
-import com.xxx.pcam.vo.Client;
-import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
+import java.sql.*;
+import java.util.*;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class AnnouncementService extends BaseService<Announcement,Integer> {
@@ -78,5 +76,36 @@ public class AnnouncementService extends BaseService<Announcement,Integer> {
         AssertUtil.isTrue(temp == null, "待更新记录不存在！");
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(announcementMapper.updateByPrimaryKeySelective(announcement) != 1, "更新失败！");
+    }
+
+    /**
+     * 主页公告显示
+     * @return
+     * @throws SQLException
+     */
+    @Transactional(propagation = Propagation.REQUIRED)
+    public List<String> show() throws SQLException {
+        String url = "jdbc:mysql://localhost:3306/pcam?useUnicode=true&characterEncoding=utf8&serverTimezone=GMT%2B8";
+        String username = "root";
+        String password = "root";
+        Connection connection = DriverManager.getConnection(url, username, password);
+        Statement statement = connection.createStatement();
+        ResultSet resultSet = statement.executeQuery("SELECT * FROM announcement");
+
+        List<String> context = new ArrayList<>();
+        while (resultSet.next()) {
+            String title = resultSet.getString("title");
+            String content = resultSet.getString("context");
+            String time = resultSet.getString("create_time");
+            context.add(title);
+            context.add(content);
+            context.add(time);
+        }
+
+        resultSet.close();
+        statement.close();
+        connection.close();
+
+        return context;
     }
 }

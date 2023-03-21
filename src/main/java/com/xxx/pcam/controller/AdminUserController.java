@@ -210,5 +210,4 @@ public class AdminUserController extends BaseController{
         // 调用Service层的count方法
         return  adminUserService.count(countQuery);
     }
-
 }

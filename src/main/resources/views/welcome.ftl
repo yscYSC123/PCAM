@@ -58,43 +58,24 @@
         <div class="layui-card">
             <div class="layui-card-header">最新留言</div>
             <div class="layui-card-body">
-                <ul class="layuiadmin-card-status layuiadmin-home2-usernote">
-                    <li>
-                        <h3>张三</h3>
-                        <p>作为 layui 官方推出的后台模板，从初版的饱受争议，到后续的埋头丰富，逐步占据了国内后台系统应用的主要市场。</p>
-                        <span>5月30日 00:00</span>
-                        <a href="javascript:;" layadmin-event="replyNote" data-id="7" class="layui-btn layui-btn-xs layuiadmin-reply">回复</a>
-                    </li>
-                    <li>
-                        <h3>诸葛亮</h3>
-                        <p>皓首匹夫！苍髯老贼！你枉活九十有六，一生未立寸功，只会摇唇鼓舌！助曹为虐！一条断脊之犬，还敢在我军阵前狺狺狂吠，我从未见过有如此厚颜无耻之人！</p>
-                        <span>5月02日 00:00</span>
-                        <a href="javascript:;" layadmin-event="replyNote" data-id="5" class="layui-btn layui-btn-xs layuiadmin-reply">回复</a>
-                    </li>
-                    <li>
-                        <h3>张三</h3>
-                        <p>你以为只要长得漂亮就有男生喜欢？你以为只要有了钱漂亮妹子就自己贴上来了？你以为学霸就能找到好工作？我告诉你吧，这些都是真的！</p>
-                        <span>5月11日 00:00</span>
-                        <a href="javascript:;" layadmin-event="replyNote" data-id="6" class="layui-btn layui-btn-xs layuiadmin-reply">回复</a>
-                    </li>
+                <ul class="lay-scroll" id="guestbook">
                 </ul>
             </div>
         </div>
     </div>
-    <div class="layui-col-sm8">
-        <div class="layui-row layui-col-space15">
-            <div class="layui-col-sm6">
-                <div class="layui-card">
-                    <div class="layui-card-header">最新公告</div>
-                    <div class="layui-card-body"></div>
-                </div>
+    <div class="layui-col-sm4">
+        <div class="layui-card">
+            <div class="layui-card-header">最新公告</div>
+            <div class="layui-card-body">
+                <ul class="lay-scroll" style="height: 500px" id="announce">
+                </ul>
             </div>
-            <div class="layui-col-sm6">
-                <div class="layui-card">
-                    <div class="layui-card-header">最新消息</div>
-                    <div class="layui-card-body">
-                    </div>
-                </div>
+        </div>
+    </div>
+    <div class="layui-col-sm4">
+        <div class="layui-card">
+            <div class="layui-card-header">最新消息</div>
+            <div class="layui-card-body">
             </div>
         </div>
     </div>
@@ -120,6 +101,65 @@
                 doctorCount.innerText=data.doctorCount;
                 var clientCount = document.getElementById("clientCount");
                 clientCount.innerText=data.clientCount;
+            }
+        });
+
+        $.ajax({
+            type: "post",
+            url: ctx + "/announcement/show",
+            dataType: "json",
+            success:function (data) {
+                var ul = document.getElementById("announce");
+                for (var i = 0; i < data.length; i++) {
+                    var li = document.createElement("li");
+                    var h3 = document.createElement("h3");
+                    var p = document.createElement("p");
+                    var span = document.createElement("span");
+                    h3.innerHTML = data[i];
+                    p.innerHTML = data[++i];
+                    span.innerHTML = data[++i];
+                    span.style.color = "#999";
+                    span.style.paddingLeft = "350px";
+                    h3.style.fontSize = "18px";
+                    li.style.paddingBottom = "10px";
+                    li.appendChild(h3);
+                    li.appendChild(p);
+                    li.appendChild(span);
+                    ul.appendChild(li);
+                    ul.style.overflowY = "scroll";
+                }
+            }
+        });
+
+        $.ajax({
+            type: "post",
+            url: ctx + "/guestbook/show",
+            dataType: "json",
+            success:function (data) {
+                var ul = document.getElementById("guestbook");
+                for (var i = 0; i < data.length; i++) {
+                    var li = document.createElement("li");
+                    var h3 = document.createElement("h3");
+                    var p = document.createElement("p");
+                    var span = document.createElement("span");
+                    var a = document.createElement("a");
+                    a.href = "javascript:;";
+                    a.className = "layui-btn layui-btn-xs";
+                    a.innerHTML = "回复";
+                    h3.innerHTML = data[i];
+                    p.innerHTML = data[++i];
+                    span.innerHTML = data[++i];
+                    span.style.color = "#999";
+                    span.style.paddingRight = "350px";
+                    span.style.paddingBottom = "5px";
+                    h3.style.fontSize = "18px";
+                    li.style.paddingBottom = "10px";
+                    li.appendChild(h3);
+                    li.appendChild(p);
+                    li.appendChild(span);
+                    li.appendChild(a);
+                    ul.appendChild(li);
+                }
             }
         });
 

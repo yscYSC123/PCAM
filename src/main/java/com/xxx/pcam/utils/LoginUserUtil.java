@@ -20,4 +20,18 @@ public class LoginUserUtil {
         Integer userId = UserIDBase64.decoderUserID(userIdString);
         return userId;
     }
+
+    /**
+     * 从cookie中获取userId
+     *
+     * @param request
+     * @return int
+     */
+    public static String releaseUserNameFromCookie(HttpServletRequest request) {
+        String userName = CookieUtil.getCookieValue(request, "userName");
+        if (StringUtils.isBlank(userName)) {
+            return null;
+        }
+        return userName;
+    }
 }

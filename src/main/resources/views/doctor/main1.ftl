@@ -62,7 +62,7 @@
                             <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>
                             <dl class="layui-nav-child">
                                     <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="customer_serve/index" target="_self"><i class="fa fa-envelope-open"></i><span class="layui-left-nav"> 收件箱</span></a>
+                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="message/index1" target="_self"><i class="fa fa-envelope-open"></i><span class="layui-left-nav"> 收件箱</span></a>
                                     </dd>
                                     <dd>
                                         <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-4" data-tab="customer_serve/index" target="_self"><i class="fa fa-envelope "></i><span class="layui-left-nav"> 发件箱</span></a>

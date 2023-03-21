@@ -30,7 +30,7 @@ layui.use(['table','layer'],function(){
             //fixed:固定列
             {type:'checkbox'}
             ,{field: 'id', title: '编号', sort: true,width: 80}
-            ,{field: 'img', title: '咨询师照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
+            ,{field: 'img', title: '用户照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
             ,{field: 'userName', title: '用户昵称',align:'center',style: 'height: 50px;'}
             ,{field: 'pwd', title: '用户密码',align:'center'}
             ,{field: 'name', title: '真实姓名',align:'center',width: 100}

@@ -13,7 +13,7 @@ layui.use(['table','layer'],function(){
         //单元格的最小宽度
         ,cellMinWidth:95
         //访问数据的url，后台的数据接口
-        ,url: ctx + '/adminDoctor/list'
+        ,url: ctx + '/message/list'
         //开启分页
         ,page: true
         //每页显示的数量
@@ -30,19 +30,38 @@ layui.use(['table','layer'],function(){
             //fixed:固定列
             {type:'checkbox'}
             ,{field: 'id', title: '编号', sort: true,width: 80}
-            ,{field: 'img', title: '咨询师照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
-            ,{field: 'userName', title: '咨询师名称',align:'center'}
-            ,{field: 'pwd', title: '咨询师密码',align:'center'}
-            ,{field: 'name', title: '真实姓名',align:'center',width: 100}
-            ,{field: 'sex', title: '性别',align:'center',width: 80}
-            ,{field: 'age', title: '年龄',align:'center',width: 80}
-            ,{field: 'email', title: '联系邮箱',align:'center'}
-            ,{field: 'phone', title: '联系电话',align:'center'}
-            ,{field: 'skill', title: '证书',align:'center'}
-            ,{field: 'place', title: '工作地点',align:'center'}
-            ,{title: '操作',templet:'#userListBar',field: 'right',align: 'center',minWidth:150}
+            ,{field: 'senderName', title: '发送者姓名',align:'center'}
+            ,{field: 'context', title: '内容',align:'center'}
+            ,{field: 'sendTime', title: '发送时间',align:'center'}
+            ,{field: 'isRead', title: '读取状态',align:'center',templet: function (d) {
+                    //调用函数，返回格式化的结果
+                    return formatState(d.isRead);
+                }}
+            ,{title: '操作',field: 'right',align: 'center',minWidth:150,templet: function (d) {
+                    //调用函数，返回格式化的结果
+                    return buttonState(d.isRead);
+            }}
         ]]
     });
+
+    function buttonState(isRead) {
+        if(isRead == 0){
+            return "<a class=\"layui-btn layui-btn-xs layui-btn-normal\" id=\"mark\" lay-event=\"mark\">标记为已读</a>\n" +
+                "                <a class=\"layui-btn layui-btn-xs\" id=\"edit\" lay-event=\"edit\">回复</a>\n" +
+                "                <a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"del\">删除</a>"
+        }else{
+            return "<a class=\"layui-btn layui-btn-xs\" id=\"edit\" lay-event=\"edit\">回复</a>\n" +
+                "                <a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"del\">删除</a>"
+        }
+    }
+
+    function formatState(isRead) {
+        if(isRead == 0){
+            return "<div style='color: red'>未读<div/>"
+        }else{
+            return "<div style='color: orange'>已读<div/>"
+        }
+    }
 
     /**
      * 搜索按钮的点击事件
@@ -56,10 +75,9 @@ layui.use(['table','layer'],function(){
         tableIns.reload({
             where: { //设定异步数据接口的额外参数，任意设
                 //通过文本框的值获得参数
-                userName: $("[name='userName']").val()//用户名称
-                ,name: $("[name='name']").val()//用户姓名
-                ,email: $("[name='email']").val()//用户邮箱
-                ,phone:$("[name='phone']").val()//手机号码
+                senderName: $("[name='senderName']").val()//用户名称
+                ,sendTime: $("[name='sendTime']").val()//用户姓名
+                ,isRead: $("[name='isRead']").val()//用户邮箱
             }
             ,page: {
                 curr: 1 //重新从第 1 页开始
@@ -71,13 +89,21 @@ layui.use(['table','layer'],function(){
      * 监听头部工具栏
      */
     table.on('toolbar(users)',function (data) {
-        if (data.event == "add"){
-            openAddOrUpdateUserDialog();
+        //获取被选中的数据的信息
+        var checkStatus = table.checkStatus(data.config.id);
+        deleteUsers(checkStatus.data);
+    });
+
+    /**
+     * 监听行工具栏
+     */
+    table.on('tool(users)',function (data) {
+        if (data.event == "edit"){
+            toSend(data.data.id);
         }else if (data.event == "del"){
-            //获取被选中的数据的信息
-            var checkStatus = table.checkStatus(data.config.id);
-            console.log(checkStatus);
-            deleteUsers(checkStatus.data);
+            deleteUser(data.data.id);
+        }else if(data.event == "mark"){
+            mark(data);
         }
     });
 
@@ -105,12 +131,11 @@ layui.use(['table','layer'],function(){
                     ids = ids + userData[i].id;
                 }
             }
-            //console.log(ids);
 
             //发送ajax请求，执行删除操作
             $.ajax({
                 type:"post",
-                url:ctx + "/adminDoctor/delete",
+                url:ctx + "/message/delete",
                 data:ids,
                 success:function (result) {
                     //判断删除结果
@@ -127,26 +152,36 @@ layui.use(['table','layer'],function(){
     }
 
     /**
-     * 监听行工具栏
+     * 标记
+     * @param data
      */
-    table.on('tool(users)',function (data) {
-        if (data.event == "edit"){
-            openAddOrUpdateUserDialog(data.data.id);
-        }else if (data.event == "del"){
-            deleteUser(data.data.id);
-        }
-    });
+    function mark(data) {
+        $.ajax({
+            type: "post",
+            url: ctx + "/message/mark",
+            data:data.data,
+            success: function (result) {
+                //判断删除结果
+                if (result.code == 200) {+5
+                    //刷新父窗口
+                    tableIns.reload();
+                } else {
+                    layer.msg(result.msg, {icon: 5});
+                }
+            }
+        });
+    }
 
     /**
      * 删除单条用户记录
      * @param id
      */
     function deleteUser(id) {
-        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"用户管理"},function (index) {
+        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"信息管理"},function (index) {
             layer.close(index);
             $.ajax({
                 type:"post",
-                url:ctx + "/adminDoctor/delete",
+                url:ctx + "/message/delete",
                 data:{
                     ids:id
                 },
@@ -154,7 +189,7 @@ layui.use(['table','layer'],function(){
                     //判断删除结果
                     if(result.code == 200){
                         layer.msg("删除成功！",{icon:6});
-                        //刷新表格
+                        //刷新父窗口
                         tableIns.reload();
                     }else {
                         layer.msg(result.msg,{icon: 5});
@@ -164,20 +199,19 @@ layui.use(['table','layer'],function(){
         });
     }
 
-    //打开添加或修改咨询师页面
-    function openAddOrUpdateUserDialog(id) {
-        var title = "<h3>添加咨询师</h3>";
-        var url = ctx + "/adminDoctor/toDoctorPage";
+    //打开添加或修改用户页面
+    function toSend(id) {
+        var url = ctx + "/message/toSendPage";
         //判断id是否为空
         if (id != null && id != ''){
-            title = "<h3>更新咨询师</h3>";
-            url += "?id="+id;
+            var title = "<h3>发送信息</h3>";
+            url += '?id=' + id;
         }
         //iframe层
         layui.layer.open({
             type: 2,
             title: title,
-            area: ['550px', '790px'],
+            area: ['500px', '300px'],
             content: url, //iframe的url
             maxmin:true
         });
