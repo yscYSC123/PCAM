@@ -3,10 +3,11 @@ package com.xxx.pcam.controller;
 import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.MessageQuery;
+import com.xxx.pcam.service.AdminClientService;
 import com.xxx.pcam.service.MessageService;
 import com.xxx.pcam.utils.LoginUserUtil;
-import com.xxx.pcam.vo.Guestbook;
 import com.xxx.pcam.vo.Message;
+import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,13 +23,31 @@ public class MessageController extends BaseController {
 
     @Resource
     private MessageService messageService;
+    @Resource
+    private AdminClientService adminClientService;
 
     /**
-     * 进入用户列表页面
+     * 进入收信箱页面
      */
     @RequestMapping("index1")
-    public String index(){
+    public String index1(){
         return "mailbox/receiver";
+    }
+
+    /**
+     * 进入发信箱页面
+     */
+    @RequestMapping("index2")
+    public String index2(){
+        return "mailbox/adminSend";
+    }
+
+    /**
+     * 进入发信箱页面
+     */
+    @RequestMapping("index3")
+    public String index3(){
+        return "mailbox/clientSend";
     }
 
     /**
@@ -90,6 +109,34 @@ public class MessageController extends BaseController {
         }
 
         return "mailbox/toSendPage";
+    }
+
+    /**
+     * 进入回复页面
+     *
+     * @param
+     * @return java.lang.String
+     */
+    @RequestMapping("toSendPage1")
+    public String toPage1(Integer id, HttpServletRequest request,Message message) {
+        String name = LoginUserUtil.releaseUserNameFromCookie(request);
+        // 判断Id是否为空
+        if (id != null) {
+            User send = adminClientService.name(name);
+            // 通过ID查询营销机会数据
+            User client = adminClientService.selectByPrimaryKey(id);
+            message.setReceiverName(client.getUserName());
+            message.setReceiverId(client.getId());
+            message.setReceiver(client.getLevel());
+            message.setSenderName(send.getUserName());
+            message.setSenderId(send.getId());
+            message.setSender(send.getLevel());
+            // 将数据设置到请求域中
+            request.setAttribute("message",message);
+
+        }
+
+        return "mailbox/toSendPage1";
     }
 
     /**

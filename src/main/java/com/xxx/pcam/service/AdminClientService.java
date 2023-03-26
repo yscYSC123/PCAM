@@ -117,6 +117,9 @@ public class AdminClientService extends BaseService<Client,Integer> {
         client.setUpdateDate(new Date());
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(adminClientMapper.updateByPrimaryKeySelective(client) != 1, "更新失败！");
+    }
 
+    public User name(String name){
+        return adminClientMapper.queryUserByName(name);
     }
 }

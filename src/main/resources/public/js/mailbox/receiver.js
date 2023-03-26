@@ -29,8 +29,7 @@ layui.use(['table','layer'],function(){
             //sort:是否排序
             //fixed:固定列
             {type:'checkbox'}
-            ,{field: 'id', title: '编号', sort: true,width: 80}
-            ,{field: 'senderName', title: '发送者姓名',align:'center'}
+            ,{field: 'senderName', title: '发送者',align:'center'}
             ,{field: 'context', title: '内容',align:'center'}
             ,{field: 'sendTime', title: '发送时间',align:'center'}
             ,{field: 'isRead', title: '读取状态',align:'center',templet: function (d) {

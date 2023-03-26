@@ -57,7 +57,7 @@
                                     <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="message/index1" target="_self"><i class="fa fa-envelope-open"></i><span class="layui-left-nav"> 收件箱</span></a>
                                 </dd>
                                 <dd>
-                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="customer_serve/index/2" target="_self"><i class="fa fa-envelope "></i><span class="layui-left-nav"> 发件箱</span></a>
+                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="message/index2" target="_self"><i class="fa fa-envelope "></i><span class="layui-left-nav"> 发件箱</span></a>
                                 </dd>
                         </dl>
                     </li>
