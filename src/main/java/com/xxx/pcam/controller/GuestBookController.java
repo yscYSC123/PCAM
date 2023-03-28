@@ -69,8 +69,8 @@ public class GuestBookController extends BaseController {
     @PostMapping("add")
     @ResponseBody
     public ResultInfo add(Guestbook guestbook, HttpServletRequest request) {
-        Integer createrId = LoginUserUtil.releaseUserIdFromCookie(request);
-        guestbook.setCreaterId(createrId);
+        String creater = LoginUserUtil.releaseUserNameFromCookie(request);
+        guestbook.setCreater(creater);
         // 判断Id是否为空
         guestBookService.add(guestbook);
         return success("数据添加成功！");

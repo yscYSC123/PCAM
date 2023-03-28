@@ -94,10 +94,10 @@ public class GuestBookService extends BaseService<Guestbook,Integer> {
 
         List<String> context = new ArrayList<>();
         while (resultSet.next()) {
-            String id = resultSet.getString("creater_id");
+            String creater = resultSet.getString("creater");
             String content = resultSet.getString("context");
             String time = resultSet.getString("create_time");
-            context.add(id);
+            context.add(creater);
             context.add(content);
             context.add(time);
         }

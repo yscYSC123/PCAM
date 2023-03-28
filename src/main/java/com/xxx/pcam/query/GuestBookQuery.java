@@ -4,15 +4,15 @@ import com.xxx.pcam.base.BaseQuery;
 
 public class GuestBookQuery extends BaseQuery {
 
-    private Integer createrId;
+    private String creater;
     private String context;
 
-    public Integer getCreaterId() {
-        return createrId;
+    public String getCreater() {
+        return creater;
     }
 
-    public void setCreaterId(Integer createrId) {
-        this.createrId = createrId;
+    public void setCreater(String creater) {
+        this.creater = creater;
     }
 
     public String getContext() {

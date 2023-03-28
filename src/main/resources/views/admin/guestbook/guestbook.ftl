@@ -10,7 +10,7 @@
             <form class="layui-form">
                 <div class="layui-inline">
                     <div class="layui-input-inline">
-                        <input type="text" name="createrId" class="layui-input searchVal" placeholder="留言者Id" />
+                        <input type="text" name="creater" class="layui-input searchVal" placeholder="留言者" />
                     </div>
                     <div class="layui-input-inline">
                         <input type="text" name="context" class="layui-input searchVal" placeholder="留言内容" />
