@@ -5,6 +5,8 @@ import com.xxx.pcam.base.BaseQuery;
 public class AnnouncementQuery extends BaseQuery {
 
     private Integer id;
+
+    private String creater;
     private String title;
 
     public Integer getId() {
@@ -21,5 +23,13 @@ public class AnnouncementQuery extends BaseQuery {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getCreater() {
+        return creater;
+    }
+
+    public void setCreater(String creater) {
+        this.creater = creater;
     }
 }

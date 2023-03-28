@@ -32,7 +32,7 @@ layui.use(['table','layer'],function(){
             ,{field: 'id', title: '编号', sort: true}
             ,{field: 'title', title: '公告标题',align:'center'}
             ,{field: 'context', title: '公告内容',align:'center'}
-            ,{field: 'createrId', title: '创建者Id',align:'center'}
+            ,{field: 'creater', title: '创建者',align:'center'}
             ,{field: 'createTime', title: '创建时间',align:'center'}
             ,{title: '操作',templet:'#userListBar',field: 'right',align: 'center',minWidth:150}
         ]]
@@ -51,6 +51,7 @@ layui.use(['table','layer'],function(){
             where: { //设定异步数据接口的额外参数，任意设
                 //通过文本框的值获得参数
                 id: $("[name='id']").val()//公告编号
+                ,creater: $("[name='creater']").val()//公告编号
                 ,title: $("[name='title']").val()//公告标题
             }
             ,page: {

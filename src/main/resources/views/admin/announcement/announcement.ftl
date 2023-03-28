@@ -13,6 +13,9 @@
                         <input type="text" name="id" class="layui-input searchVal" placeholder="公告编号" />
                     </div>
                     <div class="layui-input-inline">
+                        <input type="text" name="creater" class="layui-input searchVal" placeholder="创建者" />
+                    </div>
+                    <div class="layui-input-inline">
                         <input type="text" name="title" class="layui-input searchVal" placeholder="公告标题" />
                     </div>
                     <a class="layui-btn search_btn" data-type="reload">

@@ -68,8 +68,8 @@ public class AnnouncementController extends BaseController {
     @PostMapping("add")
     @ResponseBody
     public ResultInfo add(Announcement announcement, HttpServletRequest request) {
-        Integer createrId = LoginUserUtil.releaseUserIdFromCookie(request);
-        announcement.setCreaterId(createrId);
+        String creater = LoginUserUtil.releaseUserNameFromCookie(request);
+        announcement.setCreater(creater);
         // 判断Id是否为空
         announcementService.add(announcement);
         return success("数据添加成功！");
