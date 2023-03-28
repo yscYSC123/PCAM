@@ -171,6 +171,42 @@
     </where>
   </select>
 
+  <!-- 多条件查询 -->
+  <select id="selectByParams1" parameterType="com.xxx.pcam.query.UserQuery" resultType="com.xxx.pcam.vo.Client">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    user
+    where
+      is_active = 1 and level != 2
+      <!-- 用户名查询 -->
+      <if test="userName != null and userName != ''">
+        and userName like concat('%',#{userName},'%')
+      </if>
+      <!-- 根据开发状态进行查询 -->
+      <if test="level != null and level != ''">
+        and level = #{level}
+      </if>
+  </select>
+
+  <!-- 多条件查询 -->
+  <select id="selectByParams2" parameterType="com.xxx.pcam.query.UserQuery" resultType="com.xxx.pcam.vo.Client">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    user
+    where
+    is_active = 1 and level != 2
+    <!-- 用户名查询 -->
+    <if test="userName != null and userName != ''">
+      and userName like concat('%',#{userName},'%')
+    </if>
+    <!-- 根据开发状态进行查询 -->
+    <if test="level != null and level != ''">
+      and level = #{level}
+    </if>
+  </select>
+
   <!-- 批量删除（修改操作） -->
   <update id="deleteBatch">
     update

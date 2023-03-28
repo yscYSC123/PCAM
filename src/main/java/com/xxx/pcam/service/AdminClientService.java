@@ -50,6 +50,44 @@ public class AdminClientService extends BaseService<Client,Integer> {
         return map;
     }
 
+    public Map<String, Object> queryClientByParams1(UserQuery userQuery) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        // 开启分页
+        PageHelper.startPage(userQuery.getPage(), userQuery.getLimit());
+        // 得到对应分页对象
+        PageInfo<Client> pageInfo = new PageInfo<>(adminClientMapper.selectByParams1(userQuery));
+
+        // 设置map对象
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",pageInfo.getTotal());
+        // 设置分页好的列表
+        map.put("data",pageInfo.getList());
+
+        return map;
+    }
+
+    public Map<String, Object> queryClientByParams2(UserQuery userQuery) {
+
+        Map<String, Object> map = new HashMap<>();
+
+        // 开启分页
+        PageHelper.startPage(userQuery.getPage(), userQuery.getLimit());
+        // 得到对应分页对象
+        PageInfo<Client> pageInfo = new PageInfo<>(adminClientMapper.selectByParams2(userQuery));
+
+        // 设置map对象
+        map.put("code",0);
+        map.put("msg","success");
+        map.put("count",pageInfo.getTotal());
+        // 设置分页好的列表
+        map.put("data",pageInfo.getList());
+
+        return map;
+    }
+
     /**
      * 添加用户
      * @param client

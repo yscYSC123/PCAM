@@ -47,6 +47,28 @@ public class AdminClientController extends BaseController {
     }
 
     /**
+     * 分页多条件查询
+     * @param userQuery
+     * @return
+     */
+    @RequestMapping("list1")
+    @ResponseBody
+    public Map<String, Object> selectByParams1(UserQuery userQuery){
+        return adminClientService.queryClientByParams1(userQuery);
+    }
+
+    /**
+     * 分页多条件查询
+     * @param userQuery
+     * @return
+     */
+    @RequestMapping("list2")
+    @ResponseBody
+    public Map<String, Object> selectByParams2(UserQuery userQuery){
+        return adminClientService.queryClientByParams2(userQuery);
+    }
+
+    /**
      * 添加
      */
     @PostMapping("add")

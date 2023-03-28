@@ -37,6 +37,6 @@
         <script type="text/html" id="imgtmp">
             <img src="images/{{d.img}}" style="width: 50px" height="50px"/>
         </script>
-    <script type="text/javascript" src="${ctx}/js/mailbox/clientSend.js"></script>
+    <script type="text/javascript" src="${ctx}/js/mailbox/doctorSend.js"></script>
     </body>
 </html>

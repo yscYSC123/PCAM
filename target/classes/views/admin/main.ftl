@@ -62,6 +62,12 @@
                         </dl>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="article/index" target="_self"><i class="layui-icon layui-icon-read"></i><span class="layui-left-nav"> 文章管理</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="layui-icon layui-icon-form"></i><span class="layui-left-nav"> 心理测评</span></a>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告管理</span></a>
                     </li>
                     <li class="layui-nav-item">

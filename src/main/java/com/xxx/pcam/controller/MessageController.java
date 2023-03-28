@@ -51,6 +51,14 @@ public class MessageController extends BaseController {
     }
 
     /**
+     * 进入发信箱页面
+     */
+    @RequestMapping("index4")
+    public String index4(){
+        return "mailbox/doctorSend";
+    }
+
+    /**
      * 分页多条件查询
      * @param messageQuery
      * @return
