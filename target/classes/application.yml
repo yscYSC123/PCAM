@@ -7,6 +7,10 @@ server:
 ## 数据源配置
 spring:
 
+  thymeleaf:
+    cache: false
+    mode: HTML
+
   datasource:
     type: com.mchange.v2.c3p0.ComboPooledDataSource
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -33,6 +37,7 @@ mybatis:
   type-aliases-package: com.xxx.pcam.vo;com.xxx.pcam.query;com.xxx.pcam.dto
   configuration:
     map-underscore-to-camel-case: true
+
 
 ## pageHelper 分页
 pagehelper:

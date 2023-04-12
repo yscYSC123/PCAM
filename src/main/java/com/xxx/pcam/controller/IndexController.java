@@ -23,7 +23,17 @@ public class IndexController extends BaseController {
 
     @RequestMapping("welcome")
     public String welcome(){
-        return "welcome";
+        return "admin/welcome";
+    }
+
+    @RequestMapping("welcome1")
+    public String welcome1(){
+        return "doctor/welcome";
+    }
+
+    @RequestMapping("welcome2")
+    public String welcome2(){
+        return "doctor/welcome";
     }
 
     @RequestMapping("register")

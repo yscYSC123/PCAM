@@ -1,84 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <#include "common.ftl">
+  <#include "../common.ftl">
 </head>
 
 
 <body class="childrenBody">
 
-<div class="layui-row layui-col-space15">
-
-    <div class="layui-col-sm6 layui-col-md3">
-        <div class="layui-card">
-            <div class="layui-card-header">
-                管理员
-                <span class="layui-badge layui-bg-green">人</span>
-            </div>
-            <div class="layui-card-body">
-                <p style="margin-top:10px; height: 40px; font-size: 36px; color: grey; font-weight: bold;" id="userCount"></p>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm6 layui-col-md3">
-        <div class="layui-card">
-            <div class="layui-card-header">
-                咨询师
-                <span class="layui-badge layui-bg-green">人</span>
-            </div>
-            <div class="layui-card-body">
-                <p style="margin-top:10px; height: 40px; font-size: 36px; color: grey; font-weight: bold;" id="doctorCount"></p>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm6 layui-col-md3">
-        <div class="layui-card">
-            <div class="layui-card-header">
-                来访者
-                <span class="layui-badge layui-bg-green">人</span>
-            </div>
-            <div class="layui-card-body">
-
-                <p style="margin-top:10px; height: 40px; font-size: 36px; color: grey; font-weight: bold;" id="clientCount"></p>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm6 layui-col-md3">
-        <div class="layui-card">
-            <div class="layui-card-header">
-                现在时间
-            </div>
-            <div class="layui-card-body">
-
-                <p style="margin-top:10px; height: 40px; font-size: 36px; color: grey; font-weight: bold;" id="time"></p>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm4">
-        <div class="layui-card">
-            <div class="layui-card-header">最新留言</div>
-            <div class="layui-card-body">
-                <ul class="lay-scroll" id="guestbook">
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm4">
-        <div class="layui-card">
-            <div class="layui-card-header">最新公告</div>
-            <div class="layui-card-body">
-                <ul class="lay-scroll" style="height: 500px" id="announce">
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm4">
-        <div class="layui-card">
-            <div class="layui-card-header">最新消息</div>
-            <div class="layui-card-body">
-            </div>
-        </div>
-    </div>
+<div class="header">
+    <img src="images/welcome.jpg" style="width:100%;height: 850px"/>
 </div>
 <script>
     layui.use(['jquery'], function(){

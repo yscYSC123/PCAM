@@ -1,7 +1,5 @@
-layui.use(['upload', 'element','form', 'layer'], function () {
+layui.use(['form', 'layer'], function () {
     var form = layui.form
-        ,upload = layui.upload
-        ,element = layui.element
         layer = parent.layer === undefined ? layui.layer : top.layer,
         $ = layui.jquery;
 

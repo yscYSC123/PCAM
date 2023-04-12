@@ -54,7 +54,20 @@ layui.use(['table','layer'],function() {
 
     //打开发送信息页面
     function openToMessage(id){
-
+        var url = ctx + "/message/toSendPage1";
+        //判断id是否为空
+        if (id != null && id != ''){
+            var title = "<h3>发送信息</h3>";
+            url += '?id=' + id;
+        }
+        //iframe层
+        layui.layer.open({
+            type: 2,
+            title: title,
+            area: ['500px', '300px'],
+            content: url, //iframe的url
+            maxmin:true
+        });
     }
 
     //打开预约页面

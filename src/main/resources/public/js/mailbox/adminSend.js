@@ -28,7 +28,7 @@ layui.use(['table','layer'],function(){
             //title:设置列的标题
             //sort:是否排序
             //fixed:固定列
-            {type:'checkbox'}
+            {type:'space'}
             ,{field: 'id', title: '编号', sort: true,width: 80}
             ,{field: 'img', title: '用户照片',align:'center',templet:'#imgtmp',width: 100,style: 'height: 50px;'}
             ,{field: 'userName', title: '用户昵称',align:'center'}

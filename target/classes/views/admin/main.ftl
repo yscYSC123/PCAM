@@ -102,6 +102,6 @@
 
 </div>
 
-<script type="text/javascript" src="${ctx}/js/main.js"></script>
+<script type="text/javascript" src="${ctx}/js/admin/main.js"></script>
 </body>
 </html>

@@ -54,6 +54,7 @@ public class ArticleService extends BaseService<Article,Integer> {
     public void add(Article article) {
         // createDate创建时间 默认是系统当前时间
         article.setCreateTime(new Date());
+        article.setStatus(1);
         // 3. 执行添加操作，判断受影响的行数
         AssertUtil.isTrue(articleMapper.insertSelective(article) != 1, "添加失败！");
     }
@@ -74,4 +75,5 @@ public class ArticleService extends BaseService<Article,Integer> {
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(articleMapper.updateByPrimaryKeySelective(article) != 1, "更新失败！");
     }
+
 }

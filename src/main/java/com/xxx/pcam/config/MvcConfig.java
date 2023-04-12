@@ -33,7 +33,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/adminDoctor/images/**","/clientArchive/images/**","/message/images/**","/user/images/**","/adminClient/images/**").addResourceLocations("file:E:/images/");
+        registry.addResourceHandler("/images/**","/adminDoctor/images/**","/clientArchive/images/**","/message/images/**","/user/images/**","/adminClient/images/**").addResourceLocations("file:E:/images/");
         super.addResourceHandlers(registry);
     }
 }

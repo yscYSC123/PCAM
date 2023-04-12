@@ -34,6 +34,14 @@ public class GuestBookController extends BaseController {
     }
 
     /**
+     * 进入用户列表页面
+     */
+    @RequestMapping("guestbook")
+    public String guestbook(){
+        return "doctor/guestbook";
+    }
+
+    /**
      * 分页多条件查询
      * @param guestBookQuery
      * @return

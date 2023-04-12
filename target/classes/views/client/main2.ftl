@@ -73,7 +73,7 @@
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告</span></a>
                     </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="guestbook/guestbook"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言</span></a>
                     </li>
                     <span class="layui-nav-bar" style="top: 201px; height: 0px; opacity: 0;"></span>
                 </ul>
@@ -104,6 +104,6 @@
 
 </div>
 
-<script type="text/javascript" src="${ctx}/js/main.js"></script>
+<script type="text/javascript" src="${ctx}/js/client/main2.js"></script>
 </body>
 </html>

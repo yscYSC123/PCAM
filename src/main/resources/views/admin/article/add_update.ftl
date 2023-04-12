@@ -11,7 +11,7 @@
                 <label class="layui-form-label">文章类型</label>
                 <div class="layui-input-block">
                     <select name="label"  id="label">
-                        <option name="label" value="${(article.label)!}">请选择角文章类型</option>
+                        <option name="label" value="${(article.label)!}">请选择文章类型</option>
                         <option value="0" id="0" >生活</option>
                         <option value="1" id="1">爱情</option>
                         <option value="2" id="2">事业</option>
@@ -33,7 +33,7 @@
             <div class="layui-form-item layui-row layui-col-xs12">
                 <label class="layui-form-label">作者</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" name="author" value="${(article.author)!}" placeholder="请输入年龄">
+                    <input type="text" class="layui-input" name="author" value="${(article.author)!}" placeholder="请输入作者">
                 </div>
             </div>
             <br/>

@@ -99,7 +99,7 @@ layui.use(['table','layer'],function(){
         }
 
         //询问是否删除
-        layer.confirm('您确定要删除选中的记录吗？',{icon:3,title:'用户管理'},function (index) {
+        layer.confirm('您确定要删除选中的记录吗？',{icon:3,title:'文章管理'},function (index) {
             layer.close(index);
             //传递的参数是数组
             var ids = "ids=";
@@ -147,7 +147,7 @@ layui.use(['table','layer'],function(){
      * @param id
      */
     function deleteUser(id) {
-        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"用户管理"},function (index) {
+        layer.confirm('您确定要删除该记录吗？',{icon:3,title:"文章管理"},function (index) {
             layer.close(index);
             $.ajax({
                 type:"post",
@@ -171,11 +171,11 @@ layui.use(['table','layer'],function(){
 
     //打开添加或修改用户页面
     function openAddOrUpdateUserDialog(id) {
-        var title = "<h3>添加用户</h3>";
+        var title = "<h3>添加文章</h3>";
         var url = ctx + "/article/toPage";
         //判断id是否为空
         if (id != null && id != ''){
-            title = "<h3>更新用户</h3>";
+            title = "<h3>更新文章</h3>";
             url += '?id=' + id;
         }
         //iframe层
