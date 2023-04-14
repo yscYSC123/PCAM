@@ -42,17 +42,18 @@
                         var h3 = document.createElement("h3");
                         var p = document.createElement("p");
                         var span = document.createElement("span");
+                        var hr = document.createElement("hr");
                         h3.innerHTML = data[i];
                         p.innerHTML = data[--i];
                         span.innerHTML = data[--i];
-                        span.style.color = "#999";
+                        h3.style.color = "#999";
                         span.style.paddingRight = "350px";
                         span.style.paddingBottom = "5px";
-                        h3.style.fontSize = "18px";
-                        li.style.paddingBottom = "10px";
+                        span.style.fontSize = "18px";
                         li.appendChild(span);
                         li.appendChild(p);
                         li.appendChild(h3);
+                        li.appendChild(hr);
                         ul.appendChild(li);
                     }
                 }

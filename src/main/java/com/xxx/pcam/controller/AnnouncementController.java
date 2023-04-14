@@ -33,6 +33,14 @@ public class AnnouncementController extends BaseController {
     }
 
     /**
+     * 进入用户列表页面
+     */
+    @RequestMapping("announcement")
+    public String guestbook(){
+        return "doctor/announcement";
+    }
+
+    /**
      * 分页多条件查询
      * @param announcementQuery
      * @return

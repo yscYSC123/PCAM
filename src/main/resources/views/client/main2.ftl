@@ -70,7 +70,10 @@
                             </dl>
                         </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="userArticle/index"><i class="layui-icon layui-icon-read"></i><span class="layui-left-nav"> 文章</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/announcement"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告</span></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="guestbook/guestbook"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言</span></a>
