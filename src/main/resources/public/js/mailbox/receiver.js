@@ -46,10 +46,12 @@ layui.use(['table','layer'],function(){
     function buttonState(isRead) {
         if(isRead == 0){
             return "<a class=\"layui-btn layui-btn-xs layui-btn-normal\" id=\"mark\" lay-event=\"mark\">标记为已读</a>\n" +
+                "                <a class=\"layui-btn layui-btn-xs layui-btn-warm\" id=\"look\" lay-event=\"look\">查看</a>\n" +
                 "                <a class=\"layui-btn layui-btn-xs\" id=\"edit\" lay-event=\"edit\">回复</a>\n" +
                 "                <a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"del\">删除</a>"
         }else{
             return "<a class=\"layui-btn layui-btn-xs\" id=\"edit\" lay-event=\"edit\">回复</a>\n" +
+                "                <a class=\"layui-btn layui-btn-xs layui-btn-warm\" id=\"look\" lay-event=\"look\">查看</a>\n" +
                 "                <a class=\"layui-btn layui-btn-xs layui-btn-danger\" lay-event=\"del\">删除</a>"
         }
     }
@@ -103,8 +105,28 @@ layui.use(['table','layer'],function(){
             deleteUser(data.data.id);
         }else if(data.event == "mark"){
             mark(data);
+        }else {
+            look(data.data.id);
         }
     });
+
+    //打开添加或修改用户页面
+    function look(id) {
+        var url = ctx + "/message/toLook";
+        //判断id是否为空
+        if (id != null && id != ''){
+            var title = "<h3>查看信息</h3>";
+            url += '?id=' + id;
+        }
+        //iframe层
+        layui.layer.open({
+            type: 2,
+            title: title,
+            area: ['500px', '300px'],
+            content: url, //iframe的url
+            maxmin:true
+        });
+    }
 
     /**
      * 删除多条用户记录

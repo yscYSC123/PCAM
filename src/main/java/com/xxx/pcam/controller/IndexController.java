@@ -33,7 +33,7 @@ public class IndexController extends BaseController {
 
     @RequestMapping("welcome2")
     public String welcome2(){
-        return "doctor/welcome";
+        return "client/welcome";
     }
 
     @RequestMapping("register")

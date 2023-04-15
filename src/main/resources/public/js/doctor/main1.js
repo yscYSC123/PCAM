@@ -16,7 +16,8 @@ layui.use(['element', 'layer', 'layuimini','jquery','jquery_cookie'], function (
             //关闭询问框
             layer.close(index);
             $.ajax({
-                url: 'user/logout', // 后端接口，用于注销会话
+                url: 'user/' +
+                    'logout', // 后端接口，用于注销会话
                 type: 'POST',
                 success: function (result) {
                     // 跳转到登录页面

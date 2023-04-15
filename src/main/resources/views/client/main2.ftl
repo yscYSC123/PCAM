@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>心理咨询预约管理系统</title>
+    <title>心理咨询管理系统</title>
     <#include "../common.ftl">
 </head>
-<body class="layui-layout-body layuimini-all">1
+<body class="layui-layout-body layuimini-all">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-logo">
@@ -14,7 +14,7 @@
         <a>
             <div class="layuimini-tool">
                 <i title="展开" class="fa fa-outdent" data-side-fold="1"></i>
-                <h2>心理咨询预约管理系统</h2>
+                <h2>心理咨询管理系统</h2>
             </div>
         </a>
         <ul class="layui-nav layui-layout-right">

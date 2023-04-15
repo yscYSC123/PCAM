@@ -120,6 +120,25 @@ public class MessageController extends BaseController {
     }
 
     /**
+     * 进入查看页面
+     *
+     * @param
+     * @return java.lang.String
+     */
+    @RequestMapping("toLook")
+    public String toLook(Integer id, HttpServletRequest request) {
+        // 判断Id是否为空
+        if (id != null) {
+            // 通过ID查询营销机会数据
+            Message message = messageService.selectByPrimaryKey(id);
+            // 将数据设置到请求域中
+            request.setAttribute("message",message);
+        }
+
+        return "mailbox/look";
+    }
+
+    /**
      * 进入回复页面
      *
      * @param

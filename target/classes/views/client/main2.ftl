@@ -2,10 +2,10 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>心理咨询预约管理系统</title>
+    <title>心理咨询管理系统</title>
     <#include "../common.ftl">
 </head>
-<body class="layui-layout-body layuimini-all">1
+<body class="layui-layout-body layuimini-all">
 <div class="layui-layout layui-layout-admin">
     <div class="layui-header header">
         <div class="layui-logo">
@@ -14,7 +14,7 @@
         <a>
             <div class="layuimini-tool">
                 <i title="展开" class="fa fa-outdent" data-side-fold="1"></i>
-                <h2>心理咨询预约管理系统</h2>
+                <h2>心理咨询管理系统</h2>
             </div>
         </a>
         <ul class="layui-nav layui-layout-right">
@@ -70,7 +70,10 @@
                             </dl>
                         </li>
                     <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告</span></a>
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="userArticle/index"><i class="layui-icon layui-icon-read"></i><span class="layui-left-nav"> 文章</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/announcement"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告</span></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="guestbook/guestbook"><i class="fa fa-edit"></i><span class="layui-left-nav"> 留言</span></a>
