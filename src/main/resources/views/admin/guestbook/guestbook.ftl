@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>公告管理</title>
+        <title>留言管理</title>
         <#include "../../common.ftl">
     </head>
     <body class="childrenBody">

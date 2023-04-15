@@ -51,6 +51,17 @@
                         <a href="javascript:;" class="layui-menu-tips" data-tab="adminDoctor/index" target="_self"><i class="fa fa-user-circle-o"></i><span class="layui-left-nav"> 咨询师管理</span></a>
                     </li>
                     <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips"><i class="layui-icon layui-icon-form"></i><span class="layui-left-nav"> 心理测评</span> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="topic/topicView" target="_self"><i class="layui-icon layui-icon-tabs"></i><span class="layui-left-nav"> 试题</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="pgtest/pgtestView" target="_self"><i class="layui-icon layui-icon-list "></i><span class="layui-left-nav"> 记录</span></a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>
                         <dl class="layui-nav-child">
                                 <dd>
@@ -63,9 +74,6 @@
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="article/index" target="_self"><i class="layui-icon layui-icon-read"></i><span class="layui-left-nav"> 文章管理</span></a>
-                    </li>
-                    <li class="layui-nav-item">
-                        <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="layui-icon layui-icon-form"></i><span class="layui-left-nav"> 心理测评</span></a>
                     </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="announcement/index" target="_self"><i class="fa fa-bell"></i><span class="layui-left-nav"> 公告管理</span></a>
