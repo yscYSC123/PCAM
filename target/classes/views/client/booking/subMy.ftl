@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>我的预约</title>
-        <#include "../../common.ftl">
+        <#include "*/common.ftl">
     </head>
     <body class="childrenBody">
         <form class="layui-form" >

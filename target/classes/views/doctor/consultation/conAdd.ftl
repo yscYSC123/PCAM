@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>咨询申请</title>
-    <#include "../../common.ftl">
+    <#include "*/common.ftl">
 </head>
 <body class="childrenBody" style="height: 400px">
     <div class="layui-form">

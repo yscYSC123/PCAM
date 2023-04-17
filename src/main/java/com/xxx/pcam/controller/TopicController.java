@@ -7,6 +7,7 @@ import com.xxx.pcam.service.TopicService;
 import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Topic;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -30,15 +31,10 @@ public class TopicController extends BaseController {
     }
 
     @RequestMapping("topicUserView")
-    public String topicUserView() {
+    public String topicUserView(Model model) {
+        List<Topic> questions = topicService.selectByList();
+        model.addAttribute("questions", questions);
         return "client/topic/topic";
-    }
-
-    @RequestMapping("topicList")
-    @ResponseBody
-    public List<Topic> topicList(HttpServletRequest request){
-        request.setAttribute("questions",topicService.selectByList());
-        return topicService.selectByList();
     }
 
     /**

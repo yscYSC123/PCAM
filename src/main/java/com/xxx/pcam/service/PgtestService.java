@@ -47,4 +47,17 @@ public class PgtestService extends BaseService<Pgtest,Integer> {
 
         return map;
     }
+
+    public boolean insert(Pgtest record) {
+        try {
+            int insert = pgtestMapper.insert(record);
+            if (insert > 0) {
+                return true;
+            } else {
+                throw new RuntimeException("数据库异常...");
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("服务器异常...." + e.getMessage());
+        }
+    }
 }
