@@ -54,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="layui-col-sm4">
+    <div class="layui-col-sm6">
         <div class="layui-card">
             <div class="layui-card-header">最新留言</div>
             <div class="layui-card-body">
@@ -63,19 +63,12 @@
             </div>
         </div>
     </div>
-    <div class="layui-col-sm4">
+    <div class="layui-col-sm6">
         <div class="layui-card">
             <div class="layui-card-header">最新公告</div>
             <div class="layui-card-body">
                 <ul class="lay-scroll" style="height: 500px" id="announce">
                 </ul>
-            </div>
-        </div>
-    </div>
-    <div class="layui-col-sm4">
-        <div class="layui-card">
-            <div class="layui-card-header">最新消息</div>
-            <div class="layui-card-body">
             </div>
         </div>
     </div>
@@ -119,9 +112,11 @@
                     p.innerHTML = data[++i];
                     span.innerHTML = data[++i];
                     span.style.color = "#999";
-                    span.style.paddingLeft = "350px";
+                    span.style.paddingRight = "350px";
+                    span.style.paddingBottom = "5px";
                     h3.style.fontSize = "18px";
                     li.style.paddingBottom = "10px";
+                    ul.style.height = "500px"
                     li.appendChild(h3);
                     li.appendChild(p);
                     li.appendChild(span);
@@ -150,10 +145,12 @@
                     span.style.paddingBottom = "5px";
                     h3.style.fontSize = "18px";
                     li.style.paddingBottom = "10px";
+                    ul.style.height = "500px"
                     li.appendChild(h3);
                     li.appendChild(p);
                     li.appendChild(span);
                     ul.appendChild(li);
+                    ul.style.overflowY = "scroll";
                 }
             }
         });

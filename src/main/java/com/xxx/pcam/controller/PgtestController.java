@@ -4,7 +4,6 @@ import com.xxx.pcam.base.BaseController;
 import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.PgtestQuery;
 import com.xxx.pcam.service.PgtestService;
-import com.xxx.pcam.vo.Pgtest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +22,15 @@ public class PgtestController extends BaseController {
     @Resource
     private PgtestService pgtestService;
 
+
     @RequestMapping("pgtestView")
-    public String topicView() {
+    public String pgtestView() {
         return "admin/topic/pgtest";
+    }
+
+    @RequestMapping("pgtestUserView")
+    public String pgtestUserView() {
+        return "client/topic/pgtest";
     }
 
     /**
@@ -52,4 +57,5 @@ public class PgtestController extends BaseController {
         pgtestService.deleteBatch(ids);
         return success("数据删除成功！");
     }
+
 }

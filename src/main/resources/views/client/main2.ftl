@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>心理咨询管理系统</title>
-    <#include "../common.ftl">
+    <#include "*/common.ftl">
 </head>
 <body class="layui-layout-body layuimini-all">
 <div class="layui-layout layui-layout-admin">
@@ -55,20 +55,31 @@
                             </dd>
                         </dl>
                     </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips" data-tab="clientArchive/myCon"><i class="fa fa-book"></i><span class="layui-left-nav"> 我的咨询</span></a>
-                        </li>
-                        <li class="layui-nav-item">
-                            <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>
-                            <dl class="layui-nav-child">
-                                    <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="message/index1" target="_self"><i class="fa fa-envelope-open"></i><span class="layui-left-nav"> 收件箱</span></a>
-                                    </dd>
-                                    <dd>
-                                        <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-4" data-tab="message/index3" target="_self"><i class="fa fa-envelope "></i><span class="layui-left-nav"> 发件箱</span></a>
-                                    </dd>
-                            </dl>
-                        </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips" data-tab="clientArchive/myCon"><i class="fa fa-book"></i><span class="layui-left-nav"> 我的咨询</span></a>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips"><i class="layui-icon layui-icon-form"></i><span class="layui-left-nav"> 心理测评</span> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-1" data-tab="topic/topicUserView" target="_self"><i class="layui-icon layui-icon-tabs"></i><span class="layui-left-nav"> 试题</span></a>
+                            </dd>
+                            <dd>
+                                <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-2" data-tab="pgtest/pgtestUserView" target="_self"><i class="layui-icon layui-icon-list "></i><span class="layui-left-nav"> 记录</span></a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li class="layui-nav-item">
+                        <a href="javascript:;" class="layui-menu-tips"><i class="fa fa-commenting"></i><span class="layui-left-nav"> 消息</span> <span class="layui-nav-more"></span></a>
+                        <dl class="layui-nav-child">
+                                <dd>
+                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-3" data-tab="message/index1" target="_self"><i class="fa fa-envelope-open"></i><span class="layui-left-nav"> 收件箱</span></a>
+                                </dd>
+                                <dd>
+                                    <a href="javascript:;" class="layui-menu-tips" data-type="tabAdd" data-tab-mpi="m-p-i-4" data-tab="message/index3" target="_self"><i class="fa fa-envelope "></i><span class="layui-left-nav"> 发件箱</span></a>
+                                </dd>
+                        </dl>
+                    </li>
                     <li class="layui-nav-item">
                         <a href="javascript:;" class="layui-menu-tips" data-tab="userArticle/index"><i class="layui-icon layui-icon-read"></i><span class="layui-left-nav"> 文章</span></a>
                     </li>

@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -73,6 +74,10 @@ public class TopicService extends BaseService<Topic,Integer> {
         AssertUtil.isTrue(temp == null, "待更新记录不存在！");
         /* 3. 执行更新操作，判断受影响的行数 */
         AssertUtil.isTrue(topicMapper.updateByPrimaryKeySelective(topic) != 1, "更新失败！");
+    }
+
+    public List<Topic> selectByList() {
+        return topicMapper.selectAll();
     }
 
 }

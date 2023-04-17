@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -26,6 +27,18 @@ public class TopicController extends BaseController {
     @RequestMapping("topicView")
     public String topicView() {
         return "admin/topic/topic";
+    }
+
+    @RequestMapping("topicUserView")
+    public String topicUserView() {
+        return "client/topic/topic";
+    }
+
+    @RequestMapping("topicList")
+    @ResponseBody
+    public List<Topic> topicList(HttpServletRequest request){
+        request.setAttribute("questions",topicService.selectByList());
+        return topicService.selectByList();
     }
 
     /**
@@ -97,4 +110,5 @@ public class TopicController extends BaseController {
         topicService.update(topic);
         return success("数据更新成功！");
     }
+
 }

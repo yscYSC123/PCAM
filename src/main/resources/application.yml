@@ -20,6 +20,8 @@ spring:
     content-type: text/html
     charset: UTF-8
     template-loader-path: classpath:/views/
+    settings:
+      classic_compatible: true
 
   ## 启用热部署
   devtools:
