@@ -54,6 +54,19 @@ public class PgtestController extends BaseController {
     }
 
     /**
+     * 分页多条件查询
+     * @param pgtestQuery
+     * @return
+     */
+    @RequestMapping("list1")
+    @ResponseBody
+    public Map<String, Object> selectByParams1(PgtestQuery pgtestQuery,HttpServletRequest request){
+        String userName = LoginUserUtil.releaseUserNameFromCookie(request);
+        pgtestQuery.setUserName(userName);
+        return pgtestService.queryByParams1(pgtestQuery);
+    }
+
+    /**
      * 删除
      *
      * @param ids
@@ -98,7 +111,7 @@ public class PgtestController extends BaseController {
             pgTest.setResult("外内混合型性格");
             pgTest.setPgtestTime(new Date());
             //从session中获取
-            pgTest.setUserOp("test");
+            pgTest.setUserOp(LoginUserUtil.releaseUserNameFromCookie(request));
             pgTest.setScore(count);
             logger.info("=================");
             //插入数据库
@@ -107,6 +120,17 @@ public class PgtestController extends BaseController {
             return mapData;
         } else if (count > 30 && count < 50) {
             pgTest.setResult("典型的内向性格");
+            pgTest.setPgtestTime(new Date());
+            //从session中获取
+            pgTest.setUserOp(LoginUserUtil.releaseUserNameFromCookie(request));
+            pgTest.setScore(count);
+            logger.info("+++++++++++++++++++++");
+            //插入数据库
+            boolean insert = pgtestService.insert(pgTest);
+            mapData.put("status", insert);
+            return mapData;
+        }else if (count >= 10 && count < 30) {
+            pgTest.setResult("极端的内向性格");
             pgTest.setPgtestTime(new Date());
             //从session中获取
             pgTest.setUserOp(LoginUserUtil.releaseUserNameFromCookie(request));

@@ -13,7 +13,7 @@ layui.use(['table','layer'],function(){
         //单元格的最小宽度
         ,cellMinWidth:95
         //访问数据的url，后台的数据接口
-        ,url: ctx + '/adminClient/list1'
+        ,url: ctx + '/adminClient/list2'
         //开启分页
         ,page: true
         //每页显示的数量

@@ -4,6 +4,8 @@ import com.xxx.pcam.base.BaseQuery;
 
 public class UserQuery extends BaseQuery {
 
+    private Integer doctorId;
+
     private String userName; // 用户名
     private String email; // 邮箱
     private String phone; // 手机号
@@ -48,5 +50,13 @@ public class UserQuery extends BaseQuery {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 }

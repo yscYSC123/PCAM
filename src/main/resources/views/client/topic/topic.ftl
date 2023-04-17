@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
     <head>
         <title>记录管理</title>
         <#include "*/common.ftl">
@@ -16,11 +16,11 @@
                                             <span>${question.content}</span>
                                             <ol>
                                                 <input type="radio" name="${question.id}${question.userOp}"  value="1">
-                                                A:是
+                                                <label style="margin-right: 30px;margin-left: -20px">A:是</label>
                                                 <input type="radio" name="${question.id}${question.userOp}" value="5">
-                                                B:不确定
+                                                <label style="margin-right: 30px;margin-left: -20px">B:不确定</label>
                                                 <input type="radio" name="${question.id}${question.userOp}" value="10">
-                                                C:不是
+                                                <label style="margin-right: 30px;margin-left: -20px">C:不是</label>
                                             </ol>
                                         </div>
                                         <hr>
@@ -68,7 +68,9 @@
                 $(":text").val("分数：" + count + "分," + "外内混合型性格");
             } else if (count > 30 && count < 50) {
                 $(":text").val("分数：" + count + "分," + "典型的内向性格");
-            } else {
+            } else if (count >= 0 && count < 30 ) {
+                $(":text").val("分数：" + count + "分," + "极端的内向性格");
+            }else {
                 $(":text").val("你有未完成的题目，请完成后提交测试！");
             }
             if (count >= 0) {

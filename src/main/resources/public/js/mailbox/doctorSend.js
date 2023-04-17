@@ -13,7 +13,7 @@ layui.use(['table','layer'],function(){
         //单元格的最小宽度
         ,cellMinWidth:95
         //访问数据的url，后台的数据接口
-        ,url: ctx + '/adminClient/list2'
+        ,url: ctx + '/adminClient/list1'
         //开启分页
         ,page: true
         //每页显示的数量
@@ -44,8 +44,10 @@ layui.use(['table','layer'],function(){
     function formatState(level) {
         if(level == 0){
             return "<div style='color: red'>管理员<div/>"
-        }else{
+        }else if(level == 1){
             return "<div style='color: orange'>咨询师<div/>"
+        }else{
+            return "<div style='color: green'>来访者<div/>"
         }
     }
 

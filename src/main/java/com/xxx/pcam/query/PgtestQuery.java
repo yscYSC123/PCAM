@@ -3,6 +3,8 @@ package com.xxx.pcam.query;
 import com.xxx.pcam.base.BaseQuery;
 
 public class PgtestQuery extends BaseQuery {
+
+    private  String userName;
     private String result;
     private String userOp;
 
@@ -20,5 +22,13 @@ public class PgtestQuery extends BaseQuery {
 
     public void setUserOp(String userOp) {
         this.userOp = userOp;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

@@ -17,6 +17,7 @@
                                 <option value="" >角色</option>
                                 <option value="0">管理员</option>
                                 <option value="1" >咨询师</option>
+                                <option value="2" >来访者</option>
                             </select>
                         </div>
                         <a class="layui-btn search_btn" data-type="reload">

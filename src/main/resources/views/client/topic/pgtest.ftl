@@ -55,7 +55,7 @@
                 //单元格的最小宽度
                 ,cellMinWidth:95
                 //访问数据的url，后台的数据接口
-                ,url: ctx + '/pgtest/list'
+                ,url: ctx + '/pgtest/list1'
                 //开启分页
                 ,page: true
                 //每页显示的数量

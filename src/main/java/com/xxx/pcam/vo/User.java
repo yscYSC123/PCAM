@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 
 public class User {
+
+    private transient Integer doctorId;
     private transient int userCount;
     private transient int doctorCount;
     private transient int clientCount;
@@ -182,5 +184,13 @@ public class User {
 
     public void setClientCount(int clientCount) {
         this.clientCount = clientCount;
+    }
+
+    public Integer getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(Integer doctorId) {
+        this.doctorId = doctorId;
     }
 }

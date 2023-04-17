@@ -5,6 +5,7 @@ import com.xxx.pcam.base.ResultInfo;
 import com.xxx.pcam.query.UserQuery;
 import com.xxx.pcam.service.AdminClientService;
 import com.xxx.pcam.service.AdminDoctorService;
+import com.xxx.pcam.utils.LoginUserUtil;
 import com.xxx.pcam.vo.Client;
 import com.xxx.pcam.vo.User;
 import org.springframework.stereotype.Controller;
@@ -53,7 +54,9 @@ public class AdminClientController extends BaseController {
      */
     @RequestMapping("list1")
     @ResponseBody
-    public Map<String, Object> selectByParams1(UserQuery userQuery){
+    public Map<String, Object> selectByParams1(UserQuery userQuery, HttpServletRequest request){
+        Integer doctorId = LoginUserUtil.releaseUserIdFromCookie(request);
+        userQuery.setDoctorId(doctorId);
         return adminClientService.queryClientByParams1(userQuery);
     }
 

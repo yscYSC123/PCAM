@@ -173,12 +173,13 @@
 
   <!-- 多条件查询 -->
   <select id="selectByParams1" parameterType="com.xxx.pcam.query.UserQuery" resultType="com.xxx.pcam.vo.Client">
-    select
+    select distinct
     <include refid="Base_Column_List"></include>
     from
-    user
+    user u
+    left join client_archive c on u.id = c.client_id
     where
-      is_active = 1 and level != 2
+      level = 0 or level = 1 or u.id = c.client_id and c.doctor_id = #{doctorId} and u.is_active = 1
       <!-- 用户名查询 -->
       <if test="userName != null and userName != ''">
         and userName like concat('%',#{userName},'%')
