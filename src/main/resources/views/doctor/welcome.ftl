@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <#include "../common.ftl">
+    <#include "*/common.ftl">
     <style>
         * {
             margin: 0;

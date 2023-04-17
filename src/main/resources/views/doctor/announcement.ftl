@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <#include "../common.ftl">
+    <#include "*/common.ftl">
 </head>
 <body class="childrenBody">
         <div class="layui-col-md12">

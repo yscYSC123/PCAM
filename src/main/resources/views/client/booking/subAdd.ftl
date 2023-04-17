@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>可预约的咨询师</title>
-    <#include "../../common.ftl">
+    <#include "*/common.ftl">
 </head>
 <body class="childrenBody" style="height: 400px">
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 10px;">

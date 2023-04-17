@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>心理咨询管理系统</title>
-    <#include "../common.ftl">
+    <#include "*/common.ftl">
 </head>
 <body class="layui-layout-body layuimini-all">1
 <div class="layui-layout layui-layout-admin">
